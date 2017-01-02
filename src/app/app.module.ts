@@ -8,15 +8,18 @@ import { AppComponent } from './app.component';
 
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 import { UserComponent } from './user/user.component';
+import { CustomerComponent } from './customer/customer.component';
 
 const appRoutes: Routes = [
-  { path: 'user', component: UserComponent }
+  { path: 'user', component: UserComponent },
+  { path: 'customer', component: CustomerComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,

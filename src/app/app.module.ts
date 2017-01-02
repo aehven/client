@@ -2,24 +2,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { routes } from './app.routes';
 
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
+import { UserComponent } from './user/user.component';
+
+const appRoutes: Routes = [
+  { path: 'user', component: UserComponent }
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule,
-    routes,
-    A2tUiModule
+    A2tUiModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
       Angular2TokenService

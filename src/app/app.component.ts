@@ -10,6 +10,16 @@ export class AppComponent {
   title = 'app works!!!';
 
   constructor(private _tokenService: Angular2TokenService) {
-      this._tokenService.init();
+    this._tokenService.init({
+        apiPath: "http://linode.binarytrees.biz:3000"
+    });
+
+    this._tokenService.signIn({
+        email:    'a0@null.com',
+        password: 'password'
+    }).subscribe(
+        res =>      console.log(res),
+        error =>    console.log(error)
+    );
   }
 }

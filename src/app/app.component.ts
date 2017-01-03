@@ -8,6 +8,7 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class AppComponent {
   title = 'app works!!!';
+  signedIn = false;
 
   constructor(private _tokenService: Angular2TokenService) {
     this._tokenService.init({
@@ -18,7 +19,7 @@ export class AppComponent {
         email:    'a0@null.com',
         password: 'password'
     }).subscribe(
-        res =>      console.log(res),
+        res =>      {this.signedIn = true; console.log(res)},
         error =>    console.log(error)
     );
   }

@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { CustomerComponent } from './customer/customer.component';
 
 const appRoutes: Routes = [
+  { path: 'restricted', component: UserComponent },
   { path: 'user', component: UserComponent },
   { path: 'customer', component: CustomerComponent }
 ]

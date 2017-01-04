@@ -11,33 +11,44 @@ import { User } from './user';
 export class UserService {
   constructor(private tokenService: Angular2TokenService, private http: Http) { }
 
+  resource = "user";
   baseUrl = "users";
+  current = null;
 
   index(): void {
     this.tokenService.get(this.baseUrl).subscribe(
-        res =>      {console.log(res);},
-        error =>    console.log(error)
+      res =>      {console.log(res);},
+      error =>    console.log(error)
     );
   }
 
   show(id): void {
     this.tokenService.get(this.baseUrl+"/"+id).subscribe(
-        res =>      {console.log(res);},
-        error =>    console.log(error)
+      res =>      {
+        console.log(res);
+        this.current = res;
+      },
+      error =>    console.log(error)
     );
   }
 
   update(id, values: Object = {}): void {
-    this.tokenService.put(this.baseUrl+"/"+id, {user: values}).subscribe(
-        res =>      {console.log(res);},
-        error =>    console.log(error)
+    this.tokenService.put(this.baseUrl+"/"+id, {[this.resource]: values}).subscribe(
+      res =>      {
+        console.log(res);
+        this.current = res;
+      },
+      error =>    console.log(error)
     );
   }
 
   create(values: Object = {}): void {
-    this.tokenService.post(this.baseUrl, {user: values}).subscribe(
-        res =>      {console.log(res);},
-        error =>    console.log(error)
+    this.tokenService.post(this.baseUrl, {[this.resource]: values}).subscribe(
+      res =>      {
+        console.log(res);
+        this.current = res;
+      },
+      error =>    console.log(error)
     );
   }
 }

@@ -31,15 +31,10 @@ export class AppComponent implements OnInit {
       res =>      {
         // this.userService.index();
         // this.userService.show(1);
-        // this.userService.update(1, {first_name: 'blah10'});
-        this.userService.create({email: "x0@null.com", first_name: "x0", password: "password", role: "admin"})
+        this.userService.create({email: "x13@null.com", first_name: "x0", password: "password", role: "admin"})
+        this.userService.update(1, {first_name: 'blah13'});
       },
       error =>    console.log(error)
     );
-
-    // this.userService.getUsers().then(users => {
-    //   this.users = users;
-    //   console.log("Users: " + JSON.stringify(this.users));
-    // });
   }
 }

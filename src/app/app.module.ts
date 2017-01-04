@@ -10,6 +10,8 @@ import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 import { UserComponent } from './user/user.component';
 import { CustomerComponent } from './customer/customer.component';
 
+import { UserService } from './user.service';
+
 const appRoutes: Routes = [
   { path: 'restricted', component: UserComponent },
   { path: 'user', component: UserComponent },
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-      Angular2TokenService
+      Angular2TokenService,
+      UserService
   ],
   bootstrap: [AppComponent]
 })

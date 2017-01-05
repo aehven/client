@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
 import { AlertModule } from 'ng2-bootstrap';
+import { DataTableModule } from "angular2-datatable";
 
 import { AppComponent } from './app.component';
 
@@ -13,6 +14,7 @@ import { UserService } from './user.service';
 import { AuthGuardService } from './auth-guard.service';
 
 import { UserComponent } from './user/user.component';
+import { UserFilterPipe } from './user/user-filter.pipe';
 import { CustomerComponent } from './customer/customer.component';
 import { LoginComponent } from './login/login.component';
 
@@ -27,7 +29,8 @@ const appRoutes: Routes = [
     AppComponent,
     UserComponent,
     CustomerComponent,
-    LoginComponent
+    LoginComponent,
+    UserFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule,
     RouterModule.forRoot(appRoutes),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    DataTableModule
   ],
   providers: [
       Angular2TokenService,

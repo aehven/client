@@ -16,8 +16,8 @@ import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'restricted', component: UserComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'customer', component: CustomerComponent },
+  { path: 'users', component: UserComponent },
+  { path: 'customers', component: CustomerComponent },
   { path: 'login', component: LoginComponent }
 ]
 

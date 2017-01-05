@@ -34,13 +34,13 @@ export class AppComponent implements OnInit {
         console.log("signIn: " + res);
         console.log("signIn: \n" + JSON.stringify(this.currentUser));
 
-        this.userService.index();
-
+        // this.userService.index();
+        //
         this.userService.show(1);
-
-        this.userService.create({email: "x18@null.com", first_name: "x0", password: "password", role: "admin"});
-
-        this.userService.update(1, {first_name: 'blah14'});
+        //
+        // this.userService.create({email: "x18@null.com", first_name: "x0", password: "password", role: "admin"});
+        //
+        // this.userService.update(1, {first_name: 'blah14'});
       },
       error => console.log(error)
     );

@@ -4,20 +4,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import { Angular2TokenService, A2tUiModule } from 'angular2-token';
+import { Angular2TokenService } from 'angular2-token';
 import { AlertModule } from 'ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 
+import { UserService } from './user.service';
+import { AuthGuardService } from './auth-guard.service';
+
 import { UserComponent } from './user/user.component';
 import { CustomerComponent } from './customer/customer.component';
-import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-  { path: 'restricted', component: UserComponent },
-  { path: 'users', component: UserComponent },
-  { path: 'customers', component: CustomerComponent },
+  { path: 'users', component: UserComponent, canActivate: [AuthGuardService] },
+  { path: 'customers', component: CustomerComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent }
 ]
 
@@ -34,12 +35,12 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule,
-    A2tUiModule,
     RouterModule.forRoot(appRoutes),
     AlertModule.forRoot()
   ],
   providers: [
       Angular2TokenService,
+      AuthGuardService,
       UserService
   ],
   bootstrap: [AppComponent]

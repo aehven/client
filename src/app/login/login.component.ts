@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -11,7 +12,8 @@ import { Angular2TokenService } from 'angular2-token';
 export class LoginComponent  {
   complexForm : FormGroup;
 
-  constructor(private tokenService: Angular2TokenService, fb: FormBuilder) {
+  constructor(private tokenService: Angular2TokenService,
+              fb: FormBuilder, private router: Router) {
     this.complexForm = fb.group({
       'email' : [null, Validators.required],
       'password': [null, Validators.required]
@@ -25,6 +27,7 @@ export class LoginComponent  {
     }).subscribe(
       res =>      {
         console.log(this.tokenService.currentUserData.email);
+        this.router.navigate(['/users']);
       },
       error => console.log(error)
     );

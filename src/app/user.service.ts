@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
+import { Headers, Http, Response } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -13,42 +12,20 @@ export class UserService {
 
   resource = "user";
   baseUrl = "users";
-  current = null;
 
-  index(): void {
-    this.tokenService.get(this.baseUrl).subscribe(
-      res =>      {console.log(res);},
-      error =>    console.log(error)
-    );
+  index(): Observable<Response> {
+    return this.tokenService.get(this.baseUrl);
   }
 
-  show(id): void {
-    this.tokenService.get(this.baseUrl+"/"+id).subscribe(
-      res =>      {
-        console.log(res);
-        this.current = res;
-      },
-      error =>    console.log(error)
-    );
+  show(id): Observable<Response> {
+    return this.tokenService.get(this.baseUrl+"/"+id);
   }
 
-  update(id, values: Object = {}): void {
-    this.tokenService.put(this.baseUrl+"/"+id, {[this.resource]: values}).subscribe(
-      res =>      {
-        console.log(res);
-        this.current = res;
-      },
-      error =>    console.log(error)
-    );
+  update(id, values: Object = {}): Observable<Response> {
+    return this.tokenService.put(this.baseUrl+"/"+id, {[this.resource]: values});
   }
 
-  create(values: Object = {}): void {
-    this.tokenService.post(this.baseUrl, {[this.resource]: values}).subscribe(
-      res =>      {
-        console.log(res);
-        this.current = res;
-      },
-      error =>    console.log(error)
-    );
+  create(values: Object = {}): Observable<Response> {
+    return this.tokenService.post(this.baseUrl, {[this.resource]: values});
   }
 }

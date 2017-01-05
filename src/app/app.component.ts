@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
   title = 'app works!!!';
   signedIn = false;
   apiPath = "http://linode.binarytrees.biz:3000";
-  users: User[];
+
+  currentUser = null;
 
   constructor(private tokenService: Angular2TokenService, private userService: UserService) {}
 
@@ -29,12 +30,51 @@ export class AppComponent implements OnInit {
         password: 'password'
     }).subscribe(
       res =>      {
-        // this.userService.index();
-        // this.userService.show(1);
-        this.userService.create({email: "x13@null.com", first_name: "x0", password: "password", role: "admin"})
-        this.userService.update(1, {first_name: 'blah13'});
+        this.userService.index().subscribe(
+          res => {
+            console.log("index: " + res);
+            console.log("index: \n" + JSON.stringify(res.json()));
+          },
+
+          error => {
+            console.log("index error: " + error);
+          }
+        );
+
+        this.userService.show(1).subscribe(
+          res => {
+            console.log("show: " + res);
+            console.log("show: \n" + JSON.stringify(res.json()));
+          },
+
+          error => {
+            console.log("show error: " + error);
+          }
+        );
+
+        this.userService.create({email: "x16@null.com", first_name: "x0", password: "password", role: "admin"}).subscribe(
+          res => {
+            console.log("create: " + res);
+            console.log("create: \n" + JSON.stringify(res.json()));
+          },
+
+          error => {
+            console.log("create error: " + error);
+          }
+        );
+
+        this.userService.update(1, {first_name: 'blah13'}).subscribe(
+          res => {
+            console.log("update: " + res);
+            console.log("update: \n" + JSON.stringify(res.json()));
+          },
+
+          error => {
+            console.log("update error: " + error);
+          }
+        );
       },
-      error =>    console.log(error)
+      error => console.log(error)
     );
   }
 }

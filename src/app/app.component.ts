@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
         password: 'password'
     }).subscribe(
       res =>      {
+        this.currentUser = JSON.stringify(res.json().data.email);
+        console.log("signIn: " + res);
+        console.log("signIn: \n" + JSON.stringify(this.currentUser));
+
         this.userService.index().subscribe(
           res => {
             console.log("index: " + res);

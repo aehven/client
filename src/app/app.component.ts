@@ -34,49 +34,13 @@ export class AppComponent implements OnInit {
         console.log("signIn: " + res);
         console.log("signIn: \n" + JSON.stringify(this.currentUser));
 
-        this.userService.index().subscribe(
-          res => {
-            console.log("index: " + res);
-            console.log("index: \n" + JSON.stringify(res.json()));
-          },
+        this.userService.index();
 
-          error => {
-            console.log("index error: " + error);
-          }
-        );
+        this.userService.show(1);
 
-        this.userService.show(1).subscribe(
-          res => {
-            console.log("show: " + res);
-            console.log("show: \n" + JSON.stringify(res.json()));
-          },
+        this.userService.create({email: "x18@null.com", first_name: "x0", password: "password", role: "admin"});
 
-          error => {
-            console.log("show error: " + error);
-          }
-        );
-
-        this.userService.create({email: "x16@null.com", first_name: "x0", password: "password", role: "admin"}).subscribe(
-          res => {
-            console.log("create: " + res);
-            console.log("create: \n" + JSON.stringify(res.json()));
-          },
-
-          error => {
-            console.log("create error: " + error);
-          }
-        );
-
-        this.userService.update(1, {first_name: 'blah13'}).subscribe(
-          res => {
-            console.log("update: " + res);
-            console.log("update: \n" + JSON.stringify(res.json()));
-          },
-
-          error => {
-            console.log("update error: " + error);
-          }
-        );
+        this.userService.update(1, {first_name: 'blah14'});
       },
       error => console.log(error)
     );

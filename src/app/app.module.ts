@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { CustomerComponent } from './customer/customer.component';
 
 import { UserService } from './user.service';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'restricted', component: UserComponent },
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     UserComponent,
-    CustomerComponent
+    CustomerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

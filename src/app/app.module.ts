@@ -15,7 +15,6 @@ import { AuthGuardService } from './auth-guard.service';
 
 import { UserComponent } from './users/index/users.component';
 import { UserFilterPipe } from './users/index/users-filter.pipe';
-import { CustomerComponent } from './customer/customer.component';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
@@ -27,7 +26,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     UserComponent,
-    CustomerComponent,
     LoginComponent,
     UserFilterPipe
   ],

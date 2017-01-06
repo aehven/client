@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl} from '@angular/forms';
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -15,6 +16,9 @@ export class UserListComponent implements OnInit {
   public sortBy = "email";
   public sortOrder = "asc";
 
+  public search = null;
+  public searchControl = new FormControl();
+
   public totalItems = 1;
   public page = 1;
   public rowsOnPage = 15; //must be called this for table component to work
@@ -28,12 +32,25 @@ export class UserListComponent implements OnInit {
       this.data = json.users;
       this.totalItems = json.count
     });
+
+    this.searchControl.valueChanges
+      .debounceTime(500)
+      .subscribe(newValue => {
+        console.log(this.search);
+        this.search = newValue;
+        this.page = 1;
+        this.getIndex();
+    });
   }
 
-  public pageChanged(event) {
+  private pageChanged(event) {
     this.rowsOnPage = event.itemsPerPage;
     this.page = event.page;
-    this.userService.index({per_page: this.rowsOnPage, page: this.page})
+    this.getIndex();
+  }
+
+  private getIndex() {
+    this.userService.index({per_page: this.rowsOnPage, page: this.page, search: this.search})
     .subscribe( data => {
       let json = data.json();
       this.data = json.users;

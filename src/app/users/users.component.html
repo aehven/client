@@ -7,7 +7,7 @@
             <div class="panel-heading">
             </div>
 
-            <table class="table table-striped" [mfData]="data | userFilter : filterQuery" #mf="mfDataTable"
+            <table class="table table-striped" [mfData]="data | usersFilter : filterQuery" #mf="mfDataTable"
                    [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                 <thead>
                 <tr>

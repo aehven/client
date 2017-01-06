@@ -13,12 +13,14 @@ import { AppComponent } from './app.component';
 import { UserService } from './users/user.service';
 import { AuthGuardService } from './auth-guard.service';
 
-import { UserComponent } from './users/index/users.component';
-import { UserFilterPipe } from './users/index/users-filter.pipe';
+import { UserComponent } from './users//user.component';
+import { UsersComponent } from './users//users.component';
+import { UsersFilterPipe } from './users//users-filter.pipe';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-  { path: 'users', component: UserComponent, canActivate: [AuthGuardService] },
+  { path: 'user', component: UserComponent },
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent }
 ]
 
@@ -26,8 +28,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     UserComponent,
+    UsersComponent,
     LoginComponent,
-    UserFilterPipe
+    UsersFilterPipe
   ],
   imports: [
     BrowserModule,

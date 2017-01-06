@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 
 import { Angular2TokenService } from 'angular2-token';
 
-import { User } from '../user';
-import { UserService } from '../user.service';
+import { User } from './user';
+import { UserService } from './user.service';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.css']
 })
-export class UserComponent implements OnInit {
+export class UsersComponent implements OnInit {
   public data;
   public sortBy = "email";
   public sortOrder = "asc";

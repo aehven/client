@@ -4,7 +4,8 @@
             <h2 class="col-xs-6">Users</h2>
         </div>
         <div class="panel panel-default">
-            <div class="panel-heading">User information</div>
+            <div class="panel-heading">
+            </div>
 
             <table class="table table-striped" [mfData]="data | userFilter : filterQuery" #mf="mfDataTable"
                    [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
@@ -45,7 +46,7 @@
                 <tfoot>
                   <tr>
                       <td colspan="5">
-                          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+                        <pagination [totalItems]="totalItems" [(ngModel)]="page" (pageChanged)="pageChanged($event)"></pagination>
                       </td>
                   </tr>
                 </tfoot>

@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
-import { AlertModule } from 'ng2-bootstrap';
+import { AlertModule, PaginationModule } from 'ng2-bootstrap';
 import { DataTableModule } from "angular2-datatable";
 
 import { AppComponent } from './app.component';
@@ -40,6 +40,7 @@ const appRoutes: Routes = [
     RouterModule,
     RouterModule.forRoot(appRoutes),
     AlertModule.forRoot(),
+    PaginationModule.forRoot(),
     DataTableModule
   ],
   providers: [

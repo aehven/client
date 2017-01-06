@@ -21,9 +21,9 @@ export class UserService {
             params.set(key, val);
         }
     }
-    // params.set('perPage', "3");
 
     let res = this.tokenService.get(this.baseUrl, {search: params});
+
     this.log_response("GET", res);
     return res;
   }

@@ -7,7 +7,7 @@ import { Angular2TokenService } from 'angular2-token';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['../app.component.css', './login.component.css']
 })
 export class LoginComponent  {
   complexForm : FormGroup;

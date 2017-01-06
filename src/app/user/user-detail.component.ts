@@ -7,11 +7,11 @@ import { User } from './user';
 import { UserService } from './user.service';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./users.css']
+  selector: 'user-detail',
+  templateUrl: './user-detail.component.html',
+  styleUrls: ['../app.component.css', './user.css']
 })
-export class UserComponent implements OnInit {
+export class UserDetailComponent implements OnInit {
   public component = this;
   public user: User;
   public form : FormGroup;

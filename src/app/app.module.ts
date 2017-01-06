@@ -10,27 +10,27 @@ import { DataTableModule } from "angular2-datatable";
 
 import { AppComponent } from './app.component';
 
-import { UserService } from './users/user.service';
+import { UserService } from './user/user.service';
 import { AuthGuardService } from './auth-guard.service';
 
-import { UserComponent } from './users/user.component';
-import { UsersComponent } from './users/users.component';
-import { UsersFilterPipe } from './users/users-filter.pipe';
+import { UserDetailComponent } from './user/user-detail.component';
+import { UserListComponent } from './user/user-list.component';
+import { UserFilterPipe } from './user/user-filter.pipe';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-  { path: 'user', component: UserComponent },
-  { path: 'users', component: UsersComponent, canActivate: [AuthGuardService] },
+  { path: 'user', component: UserDetailComponent },
+  { path: 'users', component: UserListComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    UsersComponent,
+    UserDetailComponent,
+    UserListComponent,
     LoginComponent,
-    UsersFilterPipe
+    UserFilterPipe
   ],
   imports: [
     BrowserModule,

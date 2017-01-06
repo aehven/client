@@ -6,11 +6,11 @@ import { User } from './user';
 import { UserService } from './user.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.css']
+  selector: 'user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['../app.component.css', './user.css']
 })
-export class UsersComponent implements OnInit {
+export class UserListComponent implements OnInit {
   public data;
   public sortBy = "email";
   public sortOrder = "asc";

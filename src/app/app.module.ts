@@ -13,9 +13,9 @@ import { AppComponent } from './app.component';
 import { UserService } from './users/user.service';
 import { AuthGuardService } from './auth-guard.service';
 
-import { UserComponent } from './users//user.component';
-import { UsersComponent } from './users//users.component';
-import { UsersFilterPipe } from './users//users-filter.pipe';
+import { UserComponent } from './users/user.component';
+import { UsersComponent } from './users/users.component';
+import { UsersFilterPipe } from './users/users-filter.pipe';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [

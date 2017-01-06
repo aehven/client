@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -11,16 +12,40 @@ import { UserService } from './user.service';
   styleUrls: ['./users.css']
 })
 export class UserComponent implements OnInit {
+  public component = this;
   public user: User;
+  public form : FormGroup;
 
-  constructor(private tokenService: Angular2TokenService, private userService: UserService) {}
+  constructor(private tokenService: Angular2TokenService,
+              private userService: UserService,
+              fb: FormBuilder) {
+                this.form = fb.group({
+                  'first_name' : [null, Validators.required],
+                  'last_name' : [null, Validators.required]
+                })
+              }
 
   ngOnInit() {
     this.userService.show(1)
     .subscribe( data => {
       this.user = data.json() as User;
+      this.form.patchValue({
+        first_name: this.user.first_name
+      })
       console.log(JSON.stringify(this.user));
     });
+  }
+
+  submitForm(value: any): void {
+    this.userService.update(this.user.id, {
+        first_name: value.first_name,
+        last_name: value.last_name
+    }).subscribe(
+      res =>      {
+        console.log("update successful");
+      },
+      error => console.log(error)
+    );
   }
 }
 

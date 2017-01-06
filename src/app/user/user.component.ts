@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
 })
 export class UserComponent implements OnInit {
   public data;
-  public rowsOnPage = 10;
+  public rowsOnPage = 9;
   public sortBy = "email";
   public sortOrder = "asc";
 
@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     // this.userService.show(1);
-    this.userService.index()
+    this.userService.index({per_page: this.rowsOnPage})
     .subscribe( data => {
       this.data = data.json();
     });

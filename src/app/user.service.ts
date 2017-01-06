@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Headers, Http, Response, URLSearchParams } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 
 import { Angular2TokenService } from 'angular2-token';
@@ -13,8 +13,17 @@ export class UserService {
   resource = "user";
   baseUrl = "users";
 
-  index(): Observable<Response> {
-    let res = this.tokenService.get(this.baseUrl);
+  index(options: Object = {}): Observable<Response> {
+    let params = new URLSearchParams();
+    for (var key in options) {
+        if (options.hasOwnProperty(key)) {
+            let val = options[key];
+            params.set(key, val);
+        }
+    }
+    // params.set('perPage', "3");
+
+    let res = this.tokenService.get(this.baseUrl, {search: params});
     this.log_response("GET", res);
     return res;
   }

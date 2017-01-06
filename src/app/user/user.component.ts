@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   public sortBy = "email";
   public sortOrder = "asc";
 
-  public totalItems = 30;
+  public totalItems = 1;
   public page = 1;
   public rowsOnPage = 15;
 
@@ -24,14 +24,18 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.userService.index({per_page: this.rowsOnPage, page: this.page})
     .subscribe( data => {
-      this.data = data.json();
+      let json = data.json();
+      this.data = json.users;
+      this.totalItems = json.count
     });
   }
 
   public pageChanged() {
     this.userService.index({per_page: this.rowsOnPage, page: this.page})
     .subscribe( data => {
-      this.data = data.json();
+      let json = data.json();
+      this.data = json.users;
+      this.totalItems = json.count
     });
   }
 

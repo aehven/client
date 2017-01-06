@@ -8,9 +8,9 @@
             <div *ngIf="form.controls['first_name'].hasError('required') && form.controls['first_name'].touched" class="alert alert-danger">First name is required.</div>
           </div>
           <div class="form-group" [ngClass]="{'has-error':!form.controls['last_name'].valid && form.controls['last_name'].touched}">
-            <label>last_name:</label>
+            <label>Last name:</label>
             <input class="form-control" type="text" [formControl]="form.controls['last_name']">
-            <div *ngIf="form.controls['last_name'].hasError('required') && form.controls['last_name'].touched" class="alert alert-danger">last_name is required.</div>
+            <div *ngIf="form.controls['last_name'].hasError('required') && form.controls['last_name'].touched" class="alert alert-danger">Last name is required.</div>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>

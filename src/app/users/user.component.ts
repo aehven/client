@@ -30,7 +30,8 @@ export class UserComponent implements OnInit {
     .subscribe( data => {
       this.user = data.json() as User;
       this.form.patchValue({
-        first_name: this.user.first_name
+        first_name: this.user.first_name,
+        last_name: this.user.last_name
       })
       console.log(JSON.stringify(this.user));
     });

@@ -10,17 +10,16 @@ import { DataTableModule } from "angular2-datatable";
 
 import { AppComponent } from './app.component';
 
-import { UserService } from './user.service';
+import { UserService } from './users/user.service';
 import { AuthGuardService } from './auth-guard.service';
 
-import { UserComponent } from './user/user.component';
-import { UserFilterPipe } from './user/user-filter.pipe';
+import { UserComponent } from './users/index/users.component';
+import { UserFilterPipe } from './users/index/users-filter.pipe';
 import { CustomerComponent } from './customer/customer.component';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'users', component: UserComponent, canActivate: [AuthGuardService] },
-  { path: 'customers', component: CustomerComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent }
 ]
 

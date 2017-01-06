@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
 
   public totalItems = 1;
   public page = 1;
-  public rowsOnPage = 15;
+  public rowsOnPage = 15; //must be called this for table component to work
 
   constructor(private tokenService: Angular2TokenService, private userService: UserService) {}
 
@@ -30,7 +30,9 @@ export class UserComponent implements OnInit {
     });
   }
 
-  public pageChanged() {
+  public pageChanged(event) {
+    this.rowsOnPage = event.itemsPerPage;
+    this.page = event.page;
     this.userService.index({per_page: this.rowsOnPage, page: this.page})
     .subscribe( data => {
       let json = data.json();

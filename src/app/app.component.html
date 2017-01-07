@@ -1,8 +1,4 @@
-<h1>
-  {{title}} {{tokenService.currentUserData?.email}}
-</h1>
-
-<nav>
+<nav *ngIf="tokenService.currentUserData">
   <a routerLink="/users" routerLinkActive="active">Users</a>
   <a href="" (click)="logOut()" routerLinkActive="active">Log Out</a>
 </nav>

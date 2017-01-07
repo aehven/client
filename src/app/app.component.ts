@@ -10,10 +10,7 @@ import { Angular2TokenService } from 'angular2-token';
 })
 
 export class AppComponent implements OnInit {
-  title = 'app works!!!';
   apiPath = "http://linode.binarytrees.biz:3000";
-
-  currentUser = null;
 
   constructor(private tokenService: Angular2TokenService, private router: Router) {}
 

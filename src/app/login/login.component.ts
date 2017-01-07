@@ -32,4 +32,18 @@ export class LoginComponent  {
       error => console.log(error)
     );
   }
+
+  register(value: any): boolean {
+    this.tokenService.registerAccount({
+        email:    value.email,
+        password: value.password,
+        passwordConfirmation: value.password
+    }).subscribe(
+      res =>      {
+        this.router.navigate(['/users']);
+      },
+      error => console.log(error)
+    );
+    return false;
+  }
 }

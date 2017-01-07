@@ -63,6 +63,7 @@ export class UserListComponent implements OnInit {
 
   private show(id) {
     this.router.navigate(['/user/', id]);
+    return false;
   }
 
   // this.userService.show(1);

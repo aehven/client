@@ -1,8 +1,10 @@
 <h1>
   {{title}} {{tokenService.currentUserData?.email}}
 </h1>
+
 <nav>
   <a routerLink="/users" routerLinkActive="active">Users</a>
-  <a routerLink="/login" routerLinkActive="active">Log In</a>
+  <a href="" (click)="logOut()" routerLinkActive="active">Log Out</a>
 </nav>
+
 <router-outlet></router-outlet>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -14,11 +15,20 @@ export class AppComponent implements OnInit {
 
   currentUser = null;
 
-  constructor(private tokenService: Angular2TokenService){}
+  constructor(private tokenService: Angular2TokenService, private router: Router) {}
 
   ngOnInit(): void {
     this.tokenService.init({
         apiPath: this.apiPath
     });
+  }
+
+
+  private logOut() {
+    this.tokenService.signOut().subscribe(
+      res =>      this.router.navigate(['/login/']),
+      error =>    console.log(error)
+    );
+    return false;
   }
 }

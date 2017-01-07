@@ -19,7 +19,7 @@ import { UserFilterPipe } from './user/user-filter.pipe';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
-  { path: 'user', component: UserDetailComponent },
+  { path: 'user/:id', component: UserDetailComponent },
   { path: 'users', component: UserListComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent }
 ]

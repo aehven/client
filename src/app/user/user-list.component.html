@@ -15,30 +15,30 @@
                     </th>
                   </tr>
                 <tr>
-                  <th style="width: 10%"></th>
-                  <th style="width: 20%">
+                  <th style="width: 25%">
                       <mfDefaultSorter by="first_name">First Name</mfDefaultSorter>
                   </th>
-                  <th style="width: 20%">
+                  <th style="width: 25%">
                       <mfDefaultSorter by="last_name">Last Name</mfDefaultSorter>
                   </th>
-                  <th style="width: 40%">
+                  <th style="width: 25%">
                       <mfDefaultSorter by="email">Email</mfDefaultSorter>
                   </th>
                   <th style="width: 10%">
                       <mfDefaultSorter by="role">Role</mfDefaultSorter>
                   </th>
+                  <th style="width: 5%"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let item of mf.data">
-                    <td>
-                        <button (click)="remove(item)" class="btn btn-danger">x</button>
-                    </td>
                     <td>{{item.first_name}}</td>
                     <td>{{item.last_name}}</td>
                     <td>{{item.email}}</td>
                     <td>{{item.role}}</td>
+                    <td>
+                        <button (click)="show(item.id)" class="btn btn-default">Show</button>
+                    </td>
                 </tr>
                 </tbody>
                 <tfoot>

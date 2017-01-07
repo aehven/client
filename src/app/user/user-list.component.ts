@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -23,7 +24,9 @@ export class UserListComponent implements OnInit {
   public page = 1;
   public rowsOnPage = 15; //must be called this for table component to work
 
-  constructor(private tokenService: Angular2TokenService, private userService: UserService) {}
+  constructor(private tokenService: Angular2TokenService,
+    private userService: UserService,
+    private router: Router) {}
 
   ngOnInit() {
     this.userService.index({per_page: this.rowsOnPage, page: this.page})
@@ -56,6 +59,10 @@ export class UserListComponent implements OnInit {
       this.data = json.users;
       this.totalItems = json.count
     });
+  }
+
+  private show(id) {
+    this.router.navigate(['/user/', id]);
   }
 
   // this.userService.show(1);

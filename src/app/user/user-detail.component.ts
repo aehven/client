@@ -30,7 +30,8 @@ export class UserDetailComponent implements OnInit {
                   'email' :  [null, [Validators.required, MyValidators.mailFormat]],
                   'password' : '',
                   'confirmPassword': ''
-                })
+                },
+                {validator: MyValidators.matchingPasswords('password', 'confirmPassword')})
               }
 
   ngOnInit() {

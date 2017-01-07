@@ -1,3 +1,5 @@
+import { FormGroup } from '@angular/forms';
+
 export class MyValidators {
   static mailFormat(control) {
       if(control.value == null) {
@@ -11,5 +13,19 @@ export class MyValidators {
       }
 
       return null;
+  }
+
+  static matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+    return (group: FormGroup): {[key: string]: any} => {
+      let password = group.controls[passwordKey];
+      let confirmPassword = group.controls[confirmPasswordKey];
+
+      if (password.value !== confirmPassword.value) {
+        console.log("password mismatch");
+        return {
+          mismatchedPasswords: true
+        };
+      }
+    }
   }
 }

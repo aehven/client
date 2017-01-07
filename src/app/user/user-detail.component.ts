@@ -47,7 +47,8 @@ export class UserDetailComponent implements OnInit {
         this.user = data.json() as User;
         this.form.patchValue({
           first_name: this.user.first_name,
-          last_name: this.user.last_name
+          last_name: this.user.last_name,
+          email: this.user.email
         })
         console.log(JSON.stringify(this.user));
       });

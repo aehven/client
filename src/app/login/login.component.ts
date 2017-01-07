@@ -39,8 +39,18 @@ export class LoginComponent  {
         password: value.password,
         passwordConfirmation: value.password
     }).subscribe(
-      res =>      {
-        this.router.navigate(['/users']);
+      res =>  {
+        console.log("registered: \n" + JSON.stringify(res.json()));
+        this.tokenService.signIn({
+            email:    value.email,
+            password: value.password
+        }).subscribe(
+          res =>      {
+            console.log(this.tokenService.currentUserData.email);
+            this.router.navigate(['/users']);
+          },
+          error => console.log(error)
+        );
       },
       error => console.log(error)
     );

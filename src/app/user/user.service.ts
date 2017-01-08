@@ -46,6 +46,12 @@ export class UserService {
     return res;
   }
 
+  delete(id: number): Observable<Response> {
+    let res =  this.tokenService.delete(this.baseUrl+"/"+id);
+    this.log_response("DELETE", res);
+    return res;
+  }
+
   log_response(method, res): void {
     res.subscribe(
       res => {

@@ -11,19 +11,23 @@
                 <thead>
                 <tr>
                   <th style="width: 25%">
-                      <mfDefaultSorter by="first_name">Date/Time</mfDefaultSorter>
+                      <mfDefaultSorter by="date">Date</mfDefaultSorter>
                   </th>
                   <th style="width: 25%">
-                      <mfDefaultSorter by="last_name">Description</mfDefaultSorter>
+                      <mfDefaultSorter by="time">Time</mfDefaultSorter>
                   </th>
                   <th style="width: 25%">
-                      <mfDefaultSorter by="email">Calories</mfDefaultSorter>
+                      <mfDefaultSorter by="description">Description</mfDefaultSorter>
+                  </th>
+                  <th style="width: 25%">
+                      <mfDefaultSorter by="calories">Calories</mfDefaultSorter>
                   </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let item of mf.data">
-                  <td><input class="form-control" name="dt_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.dt}}" /></td>
+                  <td><input class="form-control" name="date_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.date}}" /></td>
+                  <td><input class="form-control" name="time_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.time}}" /></td>
                   <td><input class="form-control" name="description_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.description}}" /></td>
                   <td><input class="form-control" name="calories_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.calories}}" /></td>
                 </tr>

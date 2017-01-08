@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, AfterViewChecked } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -12,7 +12,7 @@ import { MealService } from './meal.service';
   templateUrl: './meal-list.component.html',
   styleUrls: ['../app.component.css', './meal.css']
 })
-export class MealListComponent implements OnInit {
+export class MealListComponent implements AfterViewChecked {
   public data;
   public sortBy = "email";
   public sortOrder = "asc";
@@ -26,15 +26,25 @@ export class MealListComponent implements OnInit {
 
   constructor(private tokenService: Angular2TokenService,
     private mealService: MealService,
-    private router: Router) {}
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
-  ngOnInit() {
-    this.mealService.index({per_page: this.rowsOnPage, page: this.page})
-    .subscribe( data => {
-      let json = data.json();
-      this.data = json.meals;
-      this.totalItems = json.count
-    });
+  ngAfterViewChecked() {
+    /////
+    //https://angular-2-training-book.rangle.io/handout/routing/routeparams.html
+    //The reason that the params property on ActivatedRoute is an Observable is that
+    //the router may not recreate the component when navigating to the same component.
+    // In this case the parameter may change without the component being recreated.
+    /////
+    this.route.params.subscribe(params => {
+      this.mealService.index({user_id: params['id'], per_page: this.rowsOnPage, page: this.page})
+      .subscribe( data => {
+        let json = data.json();
+        this.data = json.meals;
+        this.totalItems = json.count
+      });
+    })
 
     this.searchControl.valueChanges
       .debounceTime(500)

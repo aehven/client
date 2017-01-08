@@ -26,6 +26,11 @@ export class MealListComponent implements OnInit {
 
   public userId = null;
 
+  newDate: Date;
+  newTime: string;
+  newDescription: string;
+  newCalories: number;
+
   constructor(private tokenService: Angular2TokenService,
     private mealService: MealService,
     private router: Router,
@@ -81,5 +86,15 @@ export class MealListComponent implements OnInit {
     ).subscribe(data => {
       console.log(data);
     })
+  }
+
+  private addMeal(event) {
+    this.mealService.create({
+      user_id: this.userId,
+      date: this.newDate,
+      time: this.newTime,
+      description: this.newDescription,
+      calories: this.newCalories
+    });
   }
 }

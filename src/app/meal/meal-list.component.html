@@ -26,14 +26,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><input class="form-control" name="date_" (change)="updateMeal($event, item)" /></td>
-                    <td><input class="form-control" name="time_" (change)="updateMeal($event, item)" /></td>
-                    <td><input class="form-control" name="description_" (change)="updateMeal($event, item)" /></td>
-                    <td><input class="form-control" name="calories_" (change)="updateMeal($event, item)" /></td>
-                    <!-- <td><button class="btn btn-sm">Add</button></td> -->
+                  <tr class="new-meal-row">
+                    <td><input class="form-control" [(ngModel)]="newDate" /></td>
+                    <td><input class="form-control" [(ngModel)]="newTime"  /></td>
+                    <td><input class="form-control" [(ngModel)]="newDescription"  /></td>
+                    <td><input class="form-control" [(ngModel)]="newCalories"  /></td>
                     <td>
-                      <button type="button" name="plus_" class="btn btn-success btn-sm">
+                      <button type="button" name="add_" (click)="addMeal($event)" class="btn btn-success btn-sm">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                       </button>
                     </td>
@@ -44,7 +43,7 @@
                     <td><input class="form-control" name="description_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.description}}" /></td>
                     <td><input class="form-control" name="calories_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.calories}}" /></td>
                     <td>
-                      <button type="button" name="plus_" class="btn btn-danger btn-sm">
+                      <button type="button" name="remove_{{item.id}}" (click)="deleteMeal($event)" class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                       </button>
                     </td>

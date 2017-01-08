@@ -13,6 +13,8 @@ export class UserService {
   resource = "user";
   baseUrl = "users";
 
+  public shownUser: User;
+
   index(options: Object = {}): Observable<Response> {
     let params = new URLSearchParams();
     for (var key in options) {
@@ -31,6 +33,13 @@ export class UserService {
   show(id): Observable<Response> {
     let res = this.tokenService.get(this.baseUrl+"/"+id);
     this.log_response("GET", res);
+
+    res.subscribe(
+      res => {
+        this.shownUser = res.json() as User;
+        console.log("shownUser: " + this.shownUser.email);
+    });
+
     return res;
   }
 

@@ -25,6 +25,7 @@ export class MealListComponent implements OnInit {
   public rowsOnPage = 15; //must be called this for table component to work
 
   public userId = null;
+  caloriesToday: number;
 
   newDate: Date;
   newTime: string;
@@ -50,7 +51,8 @@ export class MealListComponent implements OnInit {
       .subscribe( data => {
         let json = data.json();
         this.data = json.meals;
-        this.totalItems = json.count
+        this.totalItems = json.count;
+        this.caloriesToday = json.calories_today;
       });
     })
   }

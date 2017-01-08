@@ -10,27 +10,45 @@
                    [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                 <thead>
                 <tr>
-                  <th style="width: 15%">
+                  <th>
                       <mfDefaultSorter by="date">Date</mfDefaultSorter>
                   </th>
-                  <th style="width: 25%">
+                  <th>
                       <mfDefaultSorter by="time">Time</mfDefaultSorter>
                   </th>
-                  <th style="width: 40%">
+                  <th>
                       <mfDefaultSorter by="description">Description</mfDefaultSorter>
                   </th>
-                  <th style="width: 10%">
+                  <th>
                       <mfDefaultSorter by="calories">Calories</mfDefaultSorter>
                   </th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of mf.data">
-                  <td><input class="form-control" name="date_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.date}}" /></td>
-                  <td><input class="form-control" name="time_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.time}}" /></td>
-                  <td><input class="form-control" name="description_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.description}}" /></td>
-                  <td><input class="form-control" name="calories_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.calories}}" /></td>
-                </tr>
+                  <tr>
+                    <td><input class="form-control" name="date_" (change)="updateMeal($event, item)" /></td>
+                    <td><input class="form-control" name="time_" (change)="updateMeal($event, item)" /></td>
+                    <td><input class="form-control" name="description_" (change)="updateMeal($event, item)" /></td>
+                    <td><input class="form-control" name="calories_" (change)="updateMeal($event, item)" /></td>
+                    <!-- <td><button class="btn btn-sm">Add</button></td> -->
+                    <td>
+                      <button type="button" name="plus_" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr *ngFor="let item of mf.data">
+                    <td><input class="form-control" name="date_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.date}}" /></td>
+                    <td><input class="form-control" name="time_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.time}}" /></td>
+                    <td><input class="form-control" name="description_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.description}}" /></td>
+                    <td><input class="form-control" name="calories_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.calories}}" /></td>
+                    <td>
+                      <button type="button" name="plus_" class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      </button>
+                    </td>
+                  </tr>
                 </tbody>
                 <tfoot>
                   <tr>

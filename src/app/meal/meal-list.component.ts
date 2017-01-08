@@ -1,4 +1,4 @@
-import { Component, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -12,10 +12,10 @@ import { MealService } from './meal.service';
   templateUrl: './meal-list.component.html',
   styleUrls: ['../app.component.css', './meal.css']
 })
-export class MealListComponent implements AfterViewChecked {
+export class MealListComponent implements OnInit {
   public data;
-  public sortBy = "email";
-  public sortOrder = "asc";
+  public sortBy = "dt";
+  public sortOrder = "desc";
 
   public search = null;
   public searchControl = new FormControl();
@@ -24,13 +24,15 @@ export class MealListComponent implements AfterViewChecked {
   public page = 1;
   public rowsOnPage = 15; //must be called this for table component to work
 
+  public userId = null;
+
   constructor(private tokenService: Angular2TokenService,
     private mealService: MealService,
     private router: Router,
     private route: ActivatedRoute,
   ) {}
 
-  ngAfterViewChecked() {
+  ngOnInit() {
     /////
     //https://angular-2-training-book.rangle.io/handout/routing/routeparams.html
     //The reason that the params property on ActivatedRoute is an Observable is that
@@ -38,7 +40,8 @@ export class MealListComponent implements AfterViewChecked {
     // In this case the parameter may change without the component being recreated.
     /////
     this.route.params.subscribe(params => {
-      this.mealService.index({user_id: params['id'], per_page: this.rowsOnPage, page: this.page})
+      this.userId = params['id']
+      this.mealService.index({user_id: this.userId, per_page: this.rowsOnPage, page: this.page})
       .subscribe( data => {
         let json = data.json();
         this.data = json.meals;
@@ -63,7 +66,7 @@ export class MealListComponent implements AfterViewChecked {
   }
 
   private getIndex() {
-    this.mealService.index({per_page: this.rowsOnPage, page: this.page, search: this.search})
+    this.mealService.index({user_id: this.userId, per_page: this.rowsOnPage, page: this.page, search: this.search})
     .subscribe( data => {
       let json = data.json();
       this.data = json.meals;

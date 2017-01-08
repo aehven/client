@@ -32,6 +32,7 @@ export class UserDetailComponent implements OnInit {
                   'first_name' : [null, Validators.required],
                   'last_name' : [null, Validators.required],
                   'email' :  [null, [Validators.required, MyValidators.mailFormat]],
+                  'expected_calories' : [null, Validators.required],
                   'password' : '',
                   'confirmPassword': ''
                 },
@@ -52,20 +53,19 @@ export class UserDetailComponent implements OnInit {
         this.form.patchValue({
           first_name: this.user.first_name,
           last_name: this.user.last_name,
-          email: this.user.email
+          email: this.user.email,
+          expected_calories: this.user.expected_calories
         })
         console.log(JSON.stringify(this.user));
       });
     })
   }
 
-  submitForm(value: any): void {
-    this.userService.update(this.user.id, {
-        first_name: value.first_name,
-        last_name: value.last_name
-    }).subscribe(
+  submitForm(values: Object = {}): void {
+    this.userService.update(this.user.id, values).subscribe(
       res =>      {
         console.log("update successful");
+        this.user = res.json() as User;
       },
       error => console.log(error)
     );

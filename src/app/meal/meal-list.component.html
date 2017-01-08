@@ -43,7 +43,7 @@
                     <td><input class="form-control" name="description_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.description}}" /></td>
                     <td><input class="form-control" name="calories_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.calories}}" /></td>
                     <td>
-                      <button type="button" name="remove_{{item.id}}" (click)="deleteMeal($event)" class="btn btn-danger btn-sm">
+                      <button type="button" name="remove_{{item.id}}" (click)="deleteMeal(item.id)" class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                       </button>
                     </td>

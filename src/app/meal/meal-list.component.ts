@@ -103,4 +103,10 @@ export class MealListComponent implements OnInit {
       this.getIndex();
     })
   }
+
+  private deleteMeal(id) {
+    this.mealService.delete(id).subscribe(data => {
+      this.getIndex();
+    })
+  }
 }

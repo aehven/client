@@ -7,6 +7,9 @@ import { Angular2TokenService } from 'angular2-token';
 import { User } from './user';
 import { UserService } from './user.service';
 
+import { Meal } from '../meal/meal';
+import { MealService } from '../meal/meal.service';
+
 import { MyValidators } from '../shared/my-validators';
 
 @Component({
@@ -22,6 +25,7 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private tokenService: Angular2TokenService,
               private userService: UserService,
+              private mealService: MealService,
               private route: ActivatedRoute,
               fb: FormBuilder) {
                 this.form = fb.group({

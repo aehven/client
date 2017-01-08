@@ -95,6 +95,12 @@ export class MealListComponent implements OnInit {
       time: this.newTime,
       description: this.newDescription,
       calories: this.newCalories
-    });
+    }).subscribe(data => {
+      this.newDate = null;
+      this.newTime = null;
+      this.newDescription = null;
+      this.newCalories = null;
+      this.getIndex();
+    })
   }
 }

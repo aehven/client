@@ -3,7 +3,7 @@ export class Meal {
   description: string;
   calories: number;
   date: Date;
-  time: Time;
+  time: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

@@ -48,15 +48,6 @@ export class MealListComponent implements OnInit {
         this.totalItems = json.count
       });
     })
-
-    this.searchControl.valueChanges
-      .debounceTime(500)
-      .subscribe(newValue => {
-        console.log(this.search);
-        this.search = newValue;
-        this.page = 1;
-        this.getIndex();
-    });
   }
 
   private pageChanged(event) {
@@ -79,7 +70,16 @@ export class MealListComponent implements OnInit {
     return false;
   }
 
-  // this.mealService.show(1);
-  // this.mealService.create({email: "x18@null.com", first_name: "x0", password: "password", role: "admin"});
-  // this.mealService.update(1, {first_name: 'blah14'});
+  private updateMeal(event, item) {
+    let values = {
+      [event.target.name.split('_')[0]]: event.target.value
+    }
+
+    this.mealService.update(
+      event.target.name.split('_')[1],
+      values
+    ).subscribe(data => {
+      console.log(data);
+    })
+  }
 }

@@ -9,11 +9,6 @@
             <table class="table table-striped" [mfData]="data" #mf="mfDataTable"
                    [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                 <thead>
-                  <tr>
-                    <th colspan="50">
-                      <input class="form-control" [(ngModel)]="search" [formControl]="searchControl" placeholder="Search"/>
-                    </th>
-                  </tr>
                 <tr>
                   <th style="width: 25%">
                       <mfDefaultSorter by="first_name">Date/Time</mfDefaultSorter>
@@ -28,9 +23,9 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let item of mf.data">
-                    <td>{{item.dt}}</td>
-                    <td>{{item.description}}</td>
-                    <td>{{item.calories}}</td>
+                  <td><input class="form-control" name="dt_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.dt}}" /></td>
+                  <td><input class="form-control" name="description_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.description}}" /></td>
+                  <td><input class="form-control" name="calories_{{item.id}}" (change)="updateMeal($event, item)" value="{{item.calories}}" /></td>
                 </tr>
                 </tbody>
                 <tfoot>

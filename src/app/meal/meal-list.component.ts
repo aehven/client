@@ -94,6 +94,7 @@ export class MealListComponent implements OnInit {
       event.target.name.split('_')[1],
       values
     ).subscribe(data => {
+      this.caloriesToday = data.json().calories_today;
       console.log(data);
     })
   }

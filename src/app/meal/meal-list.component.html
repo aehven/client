@@ -9,7 +9,10 @@
                 <div class="col-sm-offset-1">
                   <h4>
                     Calorie Goal: {{expectedCalories}} &nbsp;&nbsp;&nbsp;&nbsp;
-                    Calories Today: {{caloriesToday}}
+                    <span class="calories-bad"
+                          [class.calories-good]="caloriesToday <= expectedCalories">
+                      Calories Today: {{caloriesToday}}
+                    </span>
                   </h4>
                 </div>
               </div>

@@ -1,3 +1,11 @@
 .new-meal-row {
   background-color: lightgreen !important;
 }
+
+.calories-good {
+  color: lightgreen !important;
+}
+
+.calories-bad {
+  color: red;
+}

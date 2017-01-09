@@ -5,7 +5,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 
 import { Meal } from './meal';
+import { User } from '../user/user';
 import { MealService } from './meal.service';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'meal-list',
@@ -25,6 +27,7 @@ export class MealListComponent implements OnInit {
   public rowsOnPage = 15; //must be called this for table component to work
 
   public userId = null;
+  expectedCalories: number;
   caloriesToday: number;
 
   newDate: Date;
@@ -34,6 +37,7 @@ export class MealListComponent implements OnInit {
 
   constructor(private tokenService: Angular2TokenService,
     private mealService: MealService,
+    private userService: UserService,
     private router: Router,
     private route: ActivatedRoute,
   ) {}
@@ -46,14 +50,16 @@ export class MealListComponent implements OnInit {
     // In this case the parameter may change without the component being recreated.
     /////
     this.route.params.subscribe(params => {
-      this.userId = params['id']
-      this.mealService.index({user_id: this.userId, per_page: this.rowsOnPage, page: this.page})
-      .subscribe( data => {
-        let json = data.json();
-        this.data = json.meals;
-        this.totalItems = json.count;
-        this.caloriesToday = json.calories_today;
-      });
+      this.userId = params['id'];
+      this.getIndex();
+      // this.mealService.index({user_id: this.userId, per_page: this.rowsOnPage, page: this.page})
+      // .subscribe( data => {
+      //   let json = data.json();
+      //   this.data = json.meals;
+      //   this.totalItems = json.count;
+      //   this.caloriesToday = json.calories_today;
+      //   this.expectedCalories = this.userService.shownUser.expected_calories;
+      // });
     })
   }
 
@@ -68,7 +74,9 @@ export class MealListComponent implements OnInit {
     .subscribe( data => {
       let json = data.json();
       this.data = json.meals;
-      this.totalItems = json.count
+      this.totalItems = json.count;
+      this.caloriesToday = json.calories_today;
+      this.expectedCalories = this.userService.shownUser.expected_calories;
     });
   }
 

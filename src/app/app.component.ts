@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
 
+import { User } from './user/user';
+import { UserService } from './user/user.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +15,9 @@ import { Angular2TokenService } from 'angular2-token';
 export class AppComponent implements OnInit {
   apiPath = "http://linode.binarytrees.biz:3000";
 
-  constructor(private tokenService: Angular2TokenService, private router: Router) {}
+  constructor(private tokenService: Angular2TokenService,
+    private router: Router,
+    private userService: UserService) {}
 
   ngOnInit(): void {
     this.tokenService.init({

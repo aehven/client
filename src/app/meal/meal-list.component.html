@@ -6,7 +6,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
               <div class="row">
-                <div class="col-sm-offset-1">
+                <div class="col-xs-offset-1">
                   <h4>
                     Calorie Goal: {{expectedCalories}} &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="calories-bad"
@@ -14,6 +14,13 @@
                       Calories Today: {{caloriesToday}}
                     </span>
                   </h4>
+                  <div id="meal-filter" class="row">
+                    <div class="col-xs-2"><input class="form-control" placeholder="From date" [(ngModel)]="fromDate" /></div>
+                    <div class="col-xs-2"><input class="form-control" placeholder="To date" [(ngModel)]="toDate"  /></div>
+                    <div class="col-xs-2"><input class="form-control" placeholder="From time" [(ngModel)]="fromTime"  /></div>
+                    <div class="col-xs-2"><input class="form-control" placeholder="To date" [(ngModel)]="toTime"  /></div>
+                    <div class="col-xs-2">total in period</div>
+                  </div>
                 </div>
               </div>
             </div>

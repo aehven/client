@@ -29,7 +29,8 @@ export class MealListComponent implements OnInit {
   public userId = null;
   expectedCalories: number;
   caloriesToday: number;
-
+  caloriesFiltered: number = 200;
+  
   newDate: Date;
   newTime: string;
   newDescription: string;

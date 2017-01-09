@@ -14,6 +14,7 @@ export class UserService {
   baseUrl = "users";
 
   public shownUser: User;
+  public loggedInUser: User;
 
   index(options: Object = {}): Observable<Response> {
     let params = new URLSearchParams();

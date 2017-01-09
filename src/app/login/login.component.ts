@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
 
+import { User } from '../user/user';
+import { UserService } from '../user/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +16,8 @@ export class LoginComponent  {
   complexForm : FormGroup;
 
   constructor(private tokenService: Angular2TokenService,
-              fb: FormBuilder, private router: Router) {
+              fb: FormBuilder, private router: Router,
+              private userService: UserService) {
     this.complexForm = fb.group({
       'email' : [null, Validators.required],
       'password': [null, Validators.required]
@@ -26,8 +30,14 @@ export class LoginComponent  {
         password: value.password
     }).subscribe(
       res =>      {
-        console.log(this.tokenService.currentUserData.email);
-        this.router.navigate(['/users']);
+        let u = res.json().data as User;
+        this.userService.loggedInUser = u;
+        if(u.role == "regular") {
+          this.router.navigate(['/user', u.id]);
+        }
+        else {
+          this.router.navigate(['/users']);
+        }
       },
       error => console.log(error)
     );

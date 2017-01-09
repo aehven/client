@@ -29,7 +29,7 @@ export class MealListComponent implements OnInit {
   public userId = null;
   expectedCalories: number;
   caloriesToday: number;
-  caloriesFiltered: number = 200;
+  filteredCalories: number;
 
   newDate: Date;
   newTime: string;
@@ -68,16 +68,19 @@ export class MealListComponent implements OnInit {
   }
 
   private getIndex() {
-    this.mealService.index(Object.assign(
+    let res = this.mealService.index(Object.assign(
       {user_id: this.userId, per_page: this.rowsOnPage, page: this.page},
-      this.search))
-    .subscribe( data => {
+      this.search));
+
+    res.subscribe( data => {
       let json = data.json();
       this.data = json.meals;
       this.totalItems = json.count;
       this.caloriesToday = json.calories_today;
       this.expectedCalories = this.userService.shownUser.expected_calories;
     });
+
+    return res;
   }
 
   private show(id) {
@@ -128,6 +131,8 @@ export class MealListComponent implements OnInit {
       from_time: this.fromTime,
       to_time: this.toTime
     }
-    this.getIndex();
+    this.getIndex().subscribe(res => {
+      this.filteredCalories = res.json().filtered_calories;
+    });
   }
 }

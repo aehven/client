@@ -30,11 +30,16 @@ export class MealListComponent implements OnInit {
   expectedCalories: number;
   caloriesToday: number;
   caloriesFiltered: number = 200;
-  
+
   newDate: Date;
   newTime: string;
   newDescription: string;
   newCalories: number;
+
+  fromDate: Date;
+  toDate: Date;
+  fromTime: string;
+  toTime: string;
 
   constructor(private tokenService: Angular2TokenService,
     private mealService: MealService,
@@ -53,14 +58,6 @@ export class MealListComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = params['id'];
       this.getIndex();
-      // this.mealService.index({user_id: this.userId, per_page: this.rowsOnPage, page: this.page})
-      // .subscribe( data => {
-      //   let json = data.json();
-      //   this.data = json.meals;
-      //   this.totalItems = json.count;
-      //   this.caloriesToday = json.calories_today;
-      //   this.expectedCalories = this.userService.shownUser.expected_calories;
-      // });
     })
   }
 
@@ -71,7 +68,9 @@ export class MealListComponent implements OnInit {
   }
 
   private getIndex() {
-    this.mealService.index({user_id: this.userId, per_page: this.rowsOnPage, page: this.page, search: this.search})
+    this.mealService.index(Object.assign(
+      {user_id: this.userId, per_page: this.rowsOnPage, page: this.page},
+      this.search))
     .subscribe( data => {
       let json = data.json();
       this.data = json.meals;
@@ -120,5 +119,15 @@ export class MealListComponent implements OnInit {
     this.mealService.delete(id).subscribe(data => {
       this.getIndex();
     })
+  }
+
+  private filterCalories() : void {
+    this.search = {
+      from_date: this.fromDate,
+      to_date: this.toDate,
+      from_time: this.fromTime,
+      to_time: this.toTime
+    }
+    this.getIndex();
   }
 }

@@ -17,6 +17,11 @@
             <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="error">Email is required.</div>
             <div *ngIf="form.controls['email'].hasError('mailFormat') && form.controls['email'].touched" class="error">Invalid email.</div>
           </div>
+          <div *ngIf="userService.shownUser == null" class="form-group" [ngClass]="{'has-error':!form.controls['role'].valid && form.controls['role'].touched}">
+            <label>Role:</label>
+            <input class="form-control" type="text" [formControl]="form.controls['role']">
+            <div *ngIf="form.controls['role'].hasError('required') && form.controls['role'].touched" class="error">Role is required.</div>
+          </div>
           <div class="form-group" [ngClass]="{'has-error':!form.controls['password'].valid && form.controls['password'].touched}">
             <label>Password:</label>
             <input class="form-control" type="password" [formControl]="form.controls['password']">

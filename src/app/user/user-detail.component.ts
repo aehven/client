@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
 
@@ -23,11 +23,13 @@ export class UserDetailComponent implements OnInit {
   constructor(private tokenService: Angular2TokenService,
               private userService: UserService,
               private route: ActivatedRoute,
+              private router: Router,
               fb: FormBuilder) {
                 this.form = fb.group({
                   'first_name' : [null, Validators.required],
                   'last_name' : [null, Validators.required],
                   'email' :  [null, [Validators.required, MyValidators.mailFormat]],
+                  'role' : null,
                   'password' : '',
                   'confirmPassword': ''
                 },
@@ -55,16 +57,28 @@ export class UserDetailComponent implements OnInit {
     })
   }
 
-  submitForm(value: any): void {
-    this.userService.update(this.user.id, {
-        first_name: value.first_name,
-        last_name: value.last_name
-    }).subscribe(
-      res =>      {
-        console.log("update successful");
-      },
-      error => console.log(error)
-    );
+  submitForm(values): void {
+    if(this.userService.shownUser == null) {
+      this.userService.create(values).subscribe(
+        res =>      {
+          console.log("creation successful");
+          this.router.navigate(['/users']);
+        },
+        error => console.log(error)
+      );
+    }
+    else {
+      this.userService.update(this.user.id, {
+          first_name: values.first_name,
+          last_name: values.last_name
+      }).subscribe(
+        res =>      {
+          console.log("update successful");
+          this.router.navigate(['/users']);
+        },
+        error => console.log(error)
+      );
+    }
   }
 }
 

@@ -12,8 +12,7 @@
                       New User
               </button>
             </div>
-            <table class="table table-striped" [mfData]="data" #mf="mfDataTable"
-                   [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+            <table class="table table-striped" >
                 <thead>
                   <tr>
                     <th colspan="50">
@@ -22,22 +21,22 @@
                   </tr>
                 <tr>
                   <th style="width: 25%">
-                      <mfDefaultSorter by="first_name">First Name</mfDefaultSorter>
+                      First Name
                   </th>
                   <th style="width: 25%">
-                      <mfDefaultSorter by="last_name">Last Name</mfDefaultSorter>
+                      Last Name
                   </th>
                   <th style="width: 25%">
-                      <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                      Email
                   </th>
                   <th style="width: 10%">
-                      <mfDefaultSorter by="role">Role</mfDefaultSorter>
+                      Role
                   </th>
                   <th style="width: 5%"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of mf.data">
+                <tr *ngFor="let item of data">
                     <td>{{item.first_name}}</td>
                     <td>{{item.last_name}}</td>
                     <td>{{item.email}}</td>
@@ -49,9 +48,15 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                      <td colspan="5">
-                        <ngb-pagination [(ngModel)]="page" (pageChanged)="pageChanged($event)"></ngb-pagination>
-                      </td>
+                    <td colspan="5">
+                      <ngb-pagination
+                        [collectionSize]="totalItems"
+                        [pageSize]="pageSize"
+                        [(page)]="page"
+                        (pageChange)="pageChanged($event)"
+                        >
+                      </ngb-pagination>
+                    </td>
                   </tr>
                 </tfoot>
             </table>

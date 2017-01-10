@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
@@ -22,19 +22,14 @@ export class UserListComponent implements OnInit {
 
   public totalItems = 1;
   public page = 1;
-  public rowsOnPage = 15; //must be called this for table component to work
+  public pageSize = 15;
 
   constructor(private tokenService: Angular2TokenService,
     private userService: UserService,
     private router: Router) {}
 
   ngOnInit() {
-    this.userService.index({per_page: this.rowsOnPage, page: this.page})
-    .subscribe( data => {
-      let json = data.json();
-      this.data = json.users;
-      this.totalItems = json.count
-    });
+    this.getIndex();
 
     this.searchControl.valueChanges
       .debounceTime(500)
@@ -47,13 +42,11 @@ export class UserListComponent implements OnInit {
   }
 
   private pageChanged(event) {
-    this.rowsOnPage = event.itemsPerPage;
-    this.page = event.page;
     this.getIndex();
   }
 
   private getIndex() {
-    this.userService.index({per_page: this.rowsOnPage, page: this.page, search: this.search})
+    this.userService.index({per_page: this.pageSize, page: this.page, search: this.search})
     .subscribe( data => {
       let json = data.json();
       this.data = json.users;
@@ -65,8 +58,4 @@ export class UserListComponent implements OnInit {
     this.router.navigate(['/user/', id]);
     return false;
   }
-
-  // this.userService.show(1);
-  // this.userService.create({email: "x18@null.com", first_name: "x0", password: "password", role: "admin"});
-  // this.userService.update(1, {first_name: 'blah14'});
 }

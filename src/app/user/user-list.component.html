@@ -1,10 +1,13 @@
 <div class="container-fluid">
-    <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-        <div class="row">
-            <h2 class="col-xs-6">Users ({{totalItems}})</h2>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
+  <div class="row justify-content-md-center">
+      <h2>Users <span style="font-size:60%">({{collectionSize}})</span></h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col">
               <button *ngIf="userService?.loggedInUser?.role == 'admin'"
                       class="btn btn-sm btn-default"
                       (click)="show('new')"
@@ -12,54 +15,55 @@
                       New User
               </button>
             </div>
-            <table class="table table-striped" >
-                <thead>
-                  <tr>
-                    <th colspan="50">
-                      <input class="form-control" [(ngModel)]="search" [formControl]="searchControl" placeholder="Search"/>
-                    </th>
-                  </tr>
-                <tr>
-                  <th style="width: 25%">
-                      First Name
-                  </th>
-                  <th style="width: 25%">
-                      Last Name
-                  </th>
-                  <th style="width: 25%">
-                      Email
-                  </th>
-                  <th style="width: 10%">
-                      Role
-                  </th>
-                  <th style="width: 5%"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let item of data">
-                    <td>{{item.first_name}}</td>
-                    <td>{{item.last_name}}</td>
-                    <td>{{item.email}}</td>
-                    <td>{{item.role}}</td>
-                    <td>
-                        <a href="" (click)="show(item.id)">Show</a>
-                    </td>
-                </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="5">
-                      <ngb-pagination
-                        [collectionSize]="totalItems"
-                        [pageSize]="pageSize"
-                        [(page)]="page"
-                        (pageChange)="pageChanged($event)"
-                        >
-                      </ngb-pagination>
-                    </td>
-                  </tr>
-                </tfoot>
-            </table>
+            <div class="col">
+              <input class="form-control" [(ngModel)]="search" [formControl]="searchControl" placeholder="Search"/>
+            </div>
+          </div>
         </div>
+        <table class="table table-striped" >
+          <thead>
+            <tr>
+            <th style="width: 25%">
+                First Name
+            </th>
+            <th style="width: 25%">
+                Last Name
+            </th>
+            <th style="width: 25%">
+                Email
+            </th>
+            <th style="width: 10%">
+                Role
+            </th>
+            <th style="width: 5%"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of data">
+              <td>{{item.first_name}}</td>
+              <td>{{item.last_name}}</td>
+              <td>{{item.email}}</td>
+              <td>{{item.role}}</td>
+              <td>
+                  <a href="" (click)="show(item.id)">Show</a>
+              </td>
+          </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">
+                <ngb-pagination
+                  [collectionSize]="collectionSize"
+                  [pageSize]="pageSize"
+                  [(page)]="page"
+                  (pageChange)="pageChanged($event)"
+                  >
+                </ngb-pagination>
+              </td>
+            </tr>
+          </tfoot>
+      </table>
+      </div>
     </div>
+  </div>
 </div>

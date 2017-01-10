@@ -22,7 +22,7 @@ export class UserListComponent implements OnInit {
   public search = null;
   public searchControl = new FormControl();
 
-  public totalItems = 1;
+  public collectionSize = 1;
   public page = 1;
   public pageSize = 15;
 
@@ -52,7 +52,7 @@ export class UserListComponent implements OnInit {
     .subscribe( data => {
       let json = data.json();
       this.data = json.users;
-      this.totalItems = json.count
+      this.collectionSize = json.count
     });
   }
 

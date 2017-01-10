@@ -39,7 +39,12 @@ export class UserService {
       res => {
         this.shownUser = res.json() as User;
         console.log("shownUser: " + this.shownUser.email);
-    });
+      },
+
+      error => {
+        this.shownUser = null;
+      }
+  );
 
     return res;
   }

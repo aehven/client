@@ -83,6 +83,15 @@ export class UserDetailComponent implements OnInit {
       );
     }
   }
+
+  delete(): void {
+    this.userService.delete(this.user.id)
+    .subscribe(
+      res => {
+        console.log("delete successful");
+        this.router.navigate(['/users']);
+      })
+  }
 }
 
 

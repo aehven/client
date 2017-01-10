@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 import { AlertModule, PaginationModule, TabsModule } from 'ng2-bootstrap';
 import { DataTableModule } from "angular2-datatable";
+import { DatePickerModule } from 'ng2-datepicker';
 
 import { AppComponent } from './app.component';
 
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     AlertModule.forRoot(),
     TabsModule.forRoot(),
     PaginationModule.forRoot(),
-    DataTableModule
+    DataTableModule,
+    DatePickerModule
   ],
   providers: [
       Angular2TokenService,

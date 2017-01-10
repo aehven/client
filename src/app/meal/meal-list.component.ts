@@ -126,7 +126,7 @@ export class MealListComponent implements OnInit {
 
   private filterCalories() : void {
     this.search = {
-      from_date: this.fromDate,
+      from_date: this.fromDate.date,
       to_date: this.toDate,
       from_time: this.fromTime,
       to_time: this.toTime

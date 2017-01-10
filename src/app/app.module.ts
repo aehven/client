@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { Angular2TokenService } from 'angular2-token';
-import { DataTableModule } from "angular2-datatable";
 
 import { AppComponent } from './app.component';
 

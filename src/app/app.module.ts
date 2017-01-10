@@ -42,8 +42,7 @@ const appRoutes: Routes = [
     RouterModule,
     RouterModule.forRoot(appRoutes),
     NgbAlertModule.forRoot(),
-    NgbPaginationModule.forRoot(),
-    DataTableModule
+    NgbPaginationModule.forRoot()
   ],
   providers: [
       Angular2TokenService,

@@ -1,3 +1,5 @@
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';

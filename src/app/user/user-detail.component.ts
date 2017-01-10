@@ -74,10 +74,7 @@ export class UserDetailComponent implements OnInit {
       );
     }
     else {
-      this.userService.update(this.user.id, {
-          first_name: values.first_name,
-          last_name: values.last_name
-      }).subscribe(
+      this.userService.update(this.user.id, values).subscribe(
         res =>      {
           console.log("update successful");
           this.router.navigate(['/users']);

@@ -17,11 +17,13 @@ import { UserDetailComponent } from './user/user-detail.component';
 import { UserListComponent } from './user/user-list.component';
 import { UserFilterPipe } from './user/user-filter.pipe';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   { path: 'user/:id', component: UserDetailComponent },
   { path: 'users', component: UserListComponent, canActivate: [AuthGuardService] },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 ]
 
 @NgModule({
@@ -30,6 +32,7 @@ const appRoutes: Routes = [
     UserDetailComponent,
     UserListComponent,
     LoginComponent,
+    RegisterComponent,
     UserFilterPipe
   ],
   imports: [

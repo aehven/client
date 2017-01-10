@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { Angular2TokenService } from 'angular2-token';
-import { AlertModule, PaginationModule } from 'ng2-bootstrap';
 import { DataTableModule } from "angular2-datatable";
 
 import { AppComponent } from './app.component';
@@ -39,8 +39,8 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule,
     RouterModule.forRoot(appRoutes),
-    AlertModule.forRoot(),
-    PaginationModule.forRoot(),
+    NgbAlertModule.forRoot(),
+    NgbPaginationModule.forRoot(),
     DataTableModule
   ],
   providers: [

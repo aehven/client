@@ -33,4 +33,9 @@ export class AppComponent implements OnInit {
     );
     return false;
   }
+
+  private home() {
+    this.router.navigate(['login']);
+    return false;
+  }
 }

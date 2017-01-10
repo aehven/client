@@ -12,9 +12,13 @@
             <input class="form-control" type="password" [formControl]="complexForm.controls['password']">
             <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched" class="alert alert-danger">password is required.</div>
           </div>
+          <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['confirmPassword'].valid && complexForm.controls['confirmPassword'].touched}">
+            <label>Confirm password:</label>
+            <input class="form-control" type="password" [formControl]="complexForm.controls['confirmPassword']">
+            <div *ngIf="complexForm.hasError('mismatchedPasswords') && (complexForm.controls['password'].touched || complexForm.controls['confirmPassword'].touched)" class="error">Passwords don't match.</div>
+          </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Log In</button>
-            <div class="text-right"><a href="" (click)="register()">Register</a></div>
+            <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Register</button>
           </div>
         </form>
       </div>

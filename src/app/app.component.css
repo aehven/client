@@ -6,6 +6,10 @@
   color: red;
 }
 
+/*
+  Icons inside input fields thanks to Kyle Mitofsky: https://jsfiddle.net/KyleMit/cyCFS/
+*/
+
 .left-inner-addon {
     position: relative;
 }

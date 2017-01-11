@@ -16,7 +16,10 @@
               </button>
             </div>
             <div class="col">
-              <input class="form-control" [(ngModel)]="search" [formControl]="searchControl" placeholder="Search"/>
+              <div class="left-inner-addon ">
+                <i class="glyphicon glyphicon-search"></i>
+                <input class="form-control" [(ngModel)]="search" [formControl]="searchControl"/>
+              </div>
             </div>
           </div>
         </div>

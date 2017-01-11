@@ -42,9 +42,4 @@ export class LoginComponent  {
       error => console.log(error)
     );
   }
-
-  register(value: any): boolean {
-    this.router.navigate(['/register']);
-    return false;
-  }
 }

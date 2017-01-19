@@ -49,16 +49,21 @@ export class UserDetailComponent implements OnInit {
     // In this case the parameter may change without the component being recreated.
     /////
     this.route.params.subscribe(params => {
-      this.userService.show(+params['id'])
-      .subscribe( data => {
-        this.user = data.json() as User;
-        this.form.patchValue({
-          first_name: this.user.first_name,
-          last_name: this.user.last_name,
-          email: this.user.email
-        })
-        console.log(JSON.stringify(this.user));
-      });
+      if(params['id'] == 'new') {
+        this.isReadOnly = false;
+      }
+      else {
+        this.userService.show(+params['id'])
+        .subscribe( data => {
+          this.user = data.json() as User;
+          this.form.patchValue({
+            first_name: this.user.first_name,
+            last_name: this.user.last_name,
+            email: this.user.email
+          })
+          console.log(JSON.stringify(this.user));
+        });
+      }
     })
   }
 

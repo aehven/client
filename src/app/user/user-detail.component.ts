@@ -67,7 +67,8 @@ export class UserDetailComponent implements OnInit {
       this.userService.create(values).subscribe(
         res =>      {
           console.log("creation successful");
-          this.router.navigate(['/users']);
+          this.isReadOnly = true;
+          // this.router.navigate(['/users']);
         },
         error => console.log(error)
       );
@@ -79,7 +80,7 @@ export class UserDetailComponent implements OnInit {
       }).subscribe(
         res =>      {
           console.log("update successful");
-          this.router.navigate(['/users']);
+          this.isReadOnly = true;
         },
         error => console.log(error)
       );

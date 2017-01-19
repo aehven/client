@@ -1,3 +1,5 @@
+import { environment } from '../environments/environment';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,8 +15,8 @@ import { UserService } from './user/user.service';
 })
 
 export class AppComponent implements OnInit {
-  apiPath = "http://linode.binarytrees.biz:3000";
-
+  apiPath = environment.apiPath;
+  
   constructor(private tokenService: Angular2TokenService,
     private router: Router,
     private userService: UserService) {}

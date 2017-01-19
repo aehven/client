@@ -38,6 +38,10 @@ export class UserDetailComponent implements OnInit {
               }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser():void {
     /////
     //https://angular-2-training-book.rangle.io/handout/routing/routeparams.html
     //The reason that the params property on ActivatedRoute is an Observable is that

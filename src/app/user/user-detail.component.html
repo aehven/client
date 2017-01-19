@@ -54,7 +54,7 @@
             <button
               *ngIf="!isReadOnly"
               class="btn btn-primary"
-              (click)="isReadOnly=true"
+              (click)="isReadOnly=true;getUser()"
             >
               Cancel
             </button>

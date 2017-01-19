@@ -15,10 +15,11 @@ import { MyValidators } from '../shared/my-validators';
   styleUrls: ['../app.component.css', './user.css']
 })
 export class UserDetailComponent implements OnInit {
-  public component = this;
-  public id: number;
-  public user: User;
-  public form : FormGroup;
+  private component = this;
+  private id: number;
+  private user: User;
+  private form : FormGroup;
+  private isReadOnly:boolean=true;
 
   constructor(private tokenService: Angular2TokenService,
               private userService: UserService,

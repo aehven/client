@@ -5,6 +5,7 @@ export class User {
   last_name: string;
   role: string;
   address: string;
+  phone: string;
   // this isn't necessary if open maps in new tab with address query
   // latitude: float;
   // longitude: float;

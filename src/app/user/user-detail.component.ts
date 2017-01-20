@@ -62,7 +62,7 @@ export class UserDetailComponent implements OnInit {
             last_name: this.user.last_name,
             address: this.user.address,
             email: this.user.email
-          })
+          });
           console.log(JSON.stringify(this.user));
         });
       }
@@ -99,9 +99,12 @@ export class UserDetailComponent implements OnInit {
         this.router.navigate(['/users']);
       })
   }
+
+  openMap(): boolean {
+    // http://stackoverflow.com/a/24778057/5874744
+    window.open('http://maps.google.com?q='+this.user.address);
+    // this isn't necessary if open maps in new tab with address query
+    // window.open('http://maps.google.com/maps?z=10&t=m&q=loc:'+this.user.latitude+'+'+this.user.longitude);
+    return false;
+  }
 }
-
-
-  // this.userService.show(1);
-  // this.userService.create({email: "x18@null.com", first_name: "x0", password: "password", role: "admin"});
-  // this.userService.update(1, {first_name: 'blah14'});

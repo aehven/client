@@ -28,19 +28,21 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
   }
 
   checkLogin(url: string): boolean {
-    if (this.tokenService.currentUserData) { return true; }
+    console.log(this.tokenService.currentAuthData);
+    //on startup, check if token is valid, if it is, sign in as user in cookie.
+    if (this.tokenService.currentAuthData) { return true; }
 
     // Store the attempted URL for redirecting
     // this.tokenService.redirectUrl = url;
 
     // Create a dummy session id
-    let sessionId = 123456789;
+    // let sessionId = 123456789;
 
     // Set our navigation extras object
     // that contains our global query params and fragment
     let navigationExtras: NavigationExtras = {
-      queryParams: { 'session_id': sessionId },
-      fragment: 'anchor'
+      // queryParams: { 'session_id': sessionId },
+      // fragment: 'anchor'
     };
 
     // Navigate to the login page with extras

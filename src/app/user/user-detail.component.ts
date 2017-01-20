@@ -29,6 +29,7 @@ export class UserDetailComponent implements OnInit {
                 this.form = fb.group({
                   'first_name' : [null, Validators.required],
                   'last_name' : [null, Validators.required],
+                  'address' : null,
                   'email' :  [null, [Validators.required, MyValidators.mailFormat]],
                   'role' : null,
                   'password' : '',
@@ -59,6 +60,7 @@ export class UserDetailComponent implements OnInit {
           this.form.patchValue({
             first_name: this.user.first_name,
             last_name: this.user.last_name,
+            address: this.user.address,
             email: this.user.email
           })
           console.log(JSON.stringify(this.user));
@@ -79,10 +81,7 @@ export class UserDetailComponent implements OnInit {
       );
     }
     else {
-      this.userService.update(this.user.id, {
-          first_name: values.first_name,
-          last_name: values.last_name
-      }).subscribe(
+      this.userService.update(this.user.id, values).subscribe(
         res =>      {
           console.log("update successful");
           this.isReadOnly = true;

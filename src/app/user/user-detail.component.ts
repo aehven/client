@@ -19,6 +19,7 @@ export class UserDetailComponent implements OnInit {
   private id: number;
   private user: User;
   private phone: string;
+  private email: string;
   private form : FormGroup;
   private isReadOnly:boolean=true;
 
@@ -60,6 +61,7 @@ export class UserDetailComponent implements OnInit {
         .subscribe( data => {
           this.user = data.json() as User;
           this.phone = this.user.phone;
+          this.email = this.user.email;
           this.form.patchValue({
             first_name: this.user.first_name,
             last_name: this.user.last_name,

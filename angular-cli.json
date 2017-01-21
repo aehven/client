@@ -26,12 +26,13 @@
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
+        "demo": "environments/environment.demo.ts",
         "prod": "environments/environment.prod.ts"
       }
     }
   ],
   "addons": [
-    "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)" 
+    "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
   ],
   "packages": [],
   "e2e": {

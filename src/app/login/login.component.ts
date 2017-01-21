@@ -1,3 +1,5 @@
+import { environment } from '../../environments/environment';
+
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,8 +21,8 @@ export class LoginComponent  {
               fb: FormBuilder, private router: Router,
               private userService: UserService) {
     this.complexForm = fb.group({
-      'email' : [null, Validators.required],
-      'password': [null, Validators.required]
+      'email' : [environment.demoUser, Validators.required],
+      'password': [environment.demoPassword, Validators.required]
     })
   }
 

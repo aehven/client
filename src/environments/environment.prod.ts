@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiPath: "http://linode.binarytrees.biz:3000"
+  apiPath: "http://linode.binarytrees.biz:3000",
+  demoUser: "",
+  demoPassword: ""
 };

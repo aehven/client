@@ -68,10 +68,12 @@
             </button>
 
             <button
+              href=""
               *ngIf="isReadOnly && userService.shownUser != null && userService?.loggedInUser?.role=='admin'"
-              type="button"
               class="btn btn-danger"
-              (click)="delete()"
+              mwlConfirmationPopover
+              [title]="title"
+              (confirm)="delete()"
             >
               Delete User
             </button>

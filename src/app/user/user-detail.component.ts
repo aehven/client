@@ -23,6 +23,10 @@ export class UserDetailComponent implements OnInit {
   private form : FormGroup;
   private isReadOnly:boolean=true;
 
+  private title: string = 'Really delete this user?';
+  private confirmClicked: boolean = false;
+  private cancelClicked: boolean = false;
+
   constructor(private tokenService: Angular2TokenService,
               private userService: UserService,
               private route: ActivatedRoute,
@@ -103,7 +107,7 @@ export class UserDetailComponent implements OnInit {
       res => {
         console.log("delete successful");
         this.router.navigate(['/users']);
-      })
+      });
   }
 
   openMap(): boolean {

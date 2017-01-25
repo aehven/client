@@ -32,14 +32,16 @@
             <input [readonly]="isReadOnly" class="form-control" type="text" [formControl]="form.controls['role']">
             <div *ngIf="form.controls['role'].hasError('required') && form.controls['role'].touched" class="error">Role is required.</div>
           </div>
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['password'].valid && form.controls['password'].touched}">
-            <label>Password:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="password" [formControl]="form.controls['password']">
-          </div>
-          <div class="form-group" [ngClass]="{'has-error':!form.controls['confirmPassword'].valid && form.controls['confirmPassword'].touched}">
-            <label>Confirm password:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="password" [formControl]="form.controls['confirmPassword']">
-            <div *ngIf="form.hasError('mismatchedPasswords') && (form.controls['password'].touched || form.controls['confirmPassword'].touched)" class="error">Passwords don't match.</div>
+          <div *ngIf="!isReadOnly">
+            <div class="form-group" [ngClass]="{'has-error':!form.controls['password'].valid && form.controls['password'].touched}">
+              <label>Password:</label>
+              <input [readonly]="isReadOnly" class="form-control" type="password" [formControl]="form.controls['password']">
+            </div>
+            <div class="form-group" [ngClass]="{'has-error':!form.controls['confirmPassword'].valid && form.controls['confirmPassword'].touched}">
+              <label>Confirm password:</label>
+              <input [readonly]="isReadOnly" class="form-control" type="password" [formControl]="form.controls['confirmPassword']">
+              <div *ngIf="form.hasError('mismatchedPasswords') && (form.controls['password'].touched || form.controls['confirmPassword'].touched)" class="error">Passwords don't match.</div>
+            </div>
           </div>
           <div class="form-group">
             <button

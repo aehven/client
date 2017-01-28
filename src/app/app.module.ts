@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { Angular2TokenService } from 'angular2-token';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { AppComponent } from './app.component';
 
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger',
       placement: 'top'
-    })
+    }),
+    SimpleNotificationsModule
   ],
   providers: [
       Angular2TokenService,

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Angular2TokenService } from 'angular2-token';
+import { NotificationsService } from 'angular2-notifications';
 
 import { User } from './user';
 import { UserService } from './user.service';
@@ -31,6 +32,7 @@ export class UserDetailComponent implements OnInit {
               private userService: UserService,
               private route: ActivatedRoute,
               private router: Router,
+              private notificationsService: NotificationsService,
               fb: FormBuilder) {
                 this.form = fb.group({
                   'first_name' : [null, Validators.required],
@@ -47,6 +49,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
+    this.notificationsService.success("hi", "hi", false);
   }
 
   getUser():void {

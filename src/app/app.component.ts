@@ -16,7 +16,7 @@ import { UserService } from './user/user.service';
 
 export class AppComponent implements OnInit {
   apiPath = environment.apiPath;
-  
+
   constructor(private tokenService: Angular2TokenService,
     private router: Router,
     private userService: UserService) {}

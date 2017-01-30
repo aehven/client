@@ -86,21 +86,26 @@ export class UserDetailComponent implements OnInit {
       this.userService.create(values).subscribe(
         res =>      {
           console.log("creation successful");
-          this.notificationsService.success("Yay!", "User created successfully", false);
+          this.notificationsService.success("Yay!", "User created successfully");
           this.isReadOnly = true;
-          // this.router.navigate(['/users']);
         },
-        error => console.log(error)
+        error => {
+          console.log(error);
+          this.notificationsService.error("Oops!", "User creation failed");
+        }
       );
     }
     else {
       this.userService.update(this.user.id, values).subscribe(
         res =>      {
           console.log("update successful");
-          this.notificationsService.success("Yay!", "User updated successfully", false);
+          this.notificationsService.success("Yay!", "User updated successfully");
           this.isReadOnly = true;
         },
-        error => console.log(error)
+        error => {
+          console.log(error);
+          this.notificationsService.error("Oops!", "User update failed");
+        }
       );
     }
   }

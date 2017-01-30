@@ -16,6 +16,12 @@ import { UserService } from './user/user.service';
 
 export class AppComponent implements OnInit {
   apiPath = environment.apiPath;
+  notificationOptions = {
+    position: ["top", "right"],
+    timeOut: 3000,
+    lastOnBottom: false,
+    showProgressBar: false
+  }
 
   constructor(private tokenService: Angular2TokenService,
     private router: Router,
@@ -27,7 +33,6 @@ export class AppComponent implements OnInit {
     });
   }
 
-
   private logOut() {
     this.tokenService.signOut().subscribe(
       res => {
@@ -37,5 +42,9 @@ export class AppComponent implements OnInit {
       error =>    console.log(error)
     );
     return false;
+  }
+
+  private eventDestroyed(event) {
+    console.log("eventDestroyed: " + JSON.stringify(event));
   }
 }

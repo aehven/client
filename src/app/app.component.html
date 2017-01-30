@@ -20,5 +20,8 @@
   </div>
 </nav>
 <br />
-<simple-notifications></simple-notifications>
+<simple-notifications
+ [options]="notificationOptions" 
+ (onDestroy)="eventDestroyed($event)">
+</simple-notifications>
 <router-outlet></router-outlet>

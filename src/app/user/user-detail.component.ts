@@ -49,7 +49,6 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.notificationsService.success("hi", "hi", false);
   }
 
   getUser():void {
@@ -87,6 +86,7 @@ export class UserDetailComponent implements OnInit {
       this.userService.create(values).subscribe(
         res =>      {
           console.log("creation successful");
+          this.notificationsService.success("Yay!", "User created successfully", false);
           this.isReadOnly = true;
           // this.router.navigate(['/users']);
         },
@@ -97,6 +97,7 @@ export class UserDetailComponent implements OnInit {
       this.userService.update(this.user.id, values).subscribe(
         res =>      {
           console.log("update successful");
+          this.notificationsService.success("Yay!", "User updated successfully", false);
           this.isReadOnly = true;
         },
         error => console.log(error)

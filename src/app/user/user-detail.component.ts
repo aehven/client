@@ -19,8 +19,6 @@ export class UserDetailComponent implements OnInit {
   private component = this;
   private id: number;
   private user: User;
-  private phone: string;
-  private email: string;
   private form : FormGroup;
   private isReadOnly:boolean=true;
 
@@ -66,15 +64,7 @@ export class UserDetailComponent implements OnInit {
         this.userService.show(+params['id'])
         .subscribe( data => {
           this.user = data.json() as User;
-          this.phone = this.user.phone;
-          this.email = this.user.email;
-          this.form.patchValue({
-            first_name: this.user.first_name,
-            last_name: this.user.last_name,
-            phone: this.user.phone,
-            address: this.user.address,
-            email: this.user.email
-          });
+          this.form.patchValue(this.user);
           console.log(JSON.stringify(this.user));
         });
       }

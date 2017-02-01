@@ -111,7 +111,9 @@ export class UserDetailComponent implements OnInit {
 
   openMap(): boolean {
     // http://stackoverflow.com/a/24778057/5874744
-    window.open('http://maps.google.com?q='+this.user.address);
+    let q = this.form.controls['address'].value;
+    console.log("mapping: " + q);
+    window.open('http://maps.google.com?q='+q);
     // this isn't necessary if open maps in new tab with address query
     // window.open('http://maps.google.com/maps?z=10&t=m&q=loc:'+this.user.latitude+'+'+this.user.longitude);
     return false;

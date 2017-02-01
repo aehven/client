@@ -75,7 +75,6 @@ export class UserDetailComponent implements OnInit {
     if(this.userService.shownUser == null) {
       this.userService.create(values).subscribe(
         res =>      {
-          console.log("creation successful");
           this.notificationsService.success("Yay!", "User created successfully");
           this.isReadOnly = true;
         },
@@ -88,7 +87,6 @@ export class UserDetailComponent implements OnInit {
     else {
       this.userService.update(this.user.id, values).subscribe(
         res =>      {
-          console.log("update successful");
           this.notificationsService.success("Yay!", "User updated successfully");
           this.isReadOnly = true;
         },
@@ -104,15 +102,18 @@ export class UserDetailComponent implements OnInit {
     this.userService.delete(this.user.id)
     .subscribe(
       res => {
-        console.log("delete successful");
+        this.notificationsService.success("Yay!", "User deleted successfully");
         this.router.navigate(['/users']);
+      },
+      error => {
+        console.log(error);
+        this.notificationsService.error("Oops!", "User deletion failed");
       });
   }
 
   openMap(): boolean {
     // http://stackoverflow.com/a/24778057/5874744
     let q = this.form.controls['address'].value;
-    console.log("mapping: " + q);
     window.open('http://maps.google.com?q='+q);
     // this isn't necessary if open maps in new tab with address query
     // window.open('http://maps.google.com/maps?z=10&t=m&q=loc:'+this.user.latitude+'+'+this.user.longitude);

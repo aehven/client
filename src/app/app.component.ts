@@ -45,6 +45,6 @@ export class AppComponent implements OnInit {
   }
 
   private eventDestroyed(event) {
-    console.log("eventDestroyed: " + JSON.stringify(event));
+    // console.log("eventDestroyed: " + JSON.stringify(event));
   }
 }

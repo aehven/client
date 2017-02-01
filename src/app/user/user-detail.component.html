@@ -69,16 +69,17 @@
               Cancel
             </button>
 
-            <button
+            <a
               href=""
               *ngIf="isReadOnly && userService.shownUser != null && userService?.loggedInUser?.role=='admin'"
               class="btn btn-danger"
               mwlConfirmationPopover
               [title]="title"
               (confirm)="delete()"
+              (click)="false;"
             >
               Delete User
-            </button>
+            </a>
           </div>
         </form>
       </div>

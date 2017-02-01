@@ -65,8 +65,8 @@ export class UserDetailComponent implements OnInit {
         .subscribe( data => {
           this.user = data.json() as User;
           this.form.patchValue(this.user);
-          console.log(JSON.stringify(this.user));
-        });
+        },
+        error => {console.error(error)});
       }
     })
   }

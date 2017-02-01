@@ -38,7 +38,6 @@ export class UserService {
     res.subscribe(
       res => {
         this.shownUser = res.json() as User;
-        console.log("shownUser: " + this.shownUser.email);
       },
 
       error => {
@@ -70,12 +69,13 @@ export class UserService {
   log_response(method, res): void {
     res.subscribe(
       res => {
-        console.log(method+": "+res);
-        console.log("data: \n" + JSON.stringify(res.json()));
+        console.log("data service: " + method + ": " + res);
+        console.log("data service: \n" + JSON.stringify(res.json()));
       },
 
       error => {
-        console.error("data error: " + error);
+        console.log("data service: " + method + ": " + res);
+        console.error("data service: " + error);
       }
     );
   }

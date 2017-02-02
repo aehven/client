@@ -11,6 +11,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { AppComponent } from './app.component';
 
+import { DataService } from './data.service';
 import { UserService } from './user/user.service';
 import { AuthGuardService } from './auth-guard.service';
 
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
   providers: [
       Angular2TokenService,
       AuthGuardService,
+      DataService,
       UserService
   ],
   bootstrap: [AppComponent]

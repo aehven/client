@@ -8,15 +8,16 @@ import { Angular2TokenService } from 'angular2-token';
 export class DataService {
   constructor(private tokenService: Angular2TokenService, private http: Http) { }
 
-  public shownUser;
   public loggedInUser;
+  public current = {};
 
   baseUrl(resource: string) : string {
-    if(resource == "user") {
-      return "users"
-    }
-    else {
-      return "";
+    switch(resource) {
+      case 'user':
+        return 'users';
+
+      default:
+        return null;
     }
   }
 
@@ -41,11 +42,11 @@ export class DataService {
 
     res.subscribe(
       res => {
-        this.shownUser = res.json();
+        this.current[resource] = res.json();
       },
 
       error => {
-        this.shownUser = null;
+        this.current[resource] = null;
       }
   );
 

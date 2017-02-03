@@ -6,7 +6,6 @@ import { Angular2TokenService } from 'angular2-token';
 import { NotificationsService } from 'angular2-notifications';
 
 import { User } from './user';
-import { UserService } from './user.service';
 import { DataService } from '../data.service';
 
 import { MyValidators } from '../shared/my-validators';
@@ -28,7 +27,6 @@ export class UserDetailComponent implements OnInit {
   private cancelClicked: boolean = false;
 
   constructor(private tokenService: Angular2TokenService,
-              private userService: UserService,
               private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,

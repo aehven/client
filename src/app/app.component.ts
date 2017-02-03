@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 
 import { User } from './user/user';
-import { UserService } from './user/user.service';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
   constructor(private tokenService: Angular2TokenService,
     private router: Router,
-    private userService: UserService) {}
+    private dataService: DataService) {}
 
   ngOnInit(): void {
     this.tokenService.init({
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
   private logOut() {
     this.tokenService.signOut().subscribe(
       res => {
-        this.userService.loggedInUser = null;
+        this.dataService.loggedInUser = null;
         this.router.navigate(['/login/']);
       },
       error =>    console.log(error)

@@ -8,7 +8,7 @@
         <div class="card-header">
           <div class="row">
             <div class="col-xs-auto">
-              <button *ngIf="userService?.loggedInUser?.role == 'admin'"
+              <button *ngIf="dataService?.loggedInUser?.role == 'admin'"
                       class="btn btn-primary"
                       (click)="show('new')"
                       >

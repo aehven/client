@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 
 import { User } from './user';
-import { UserService } from './user.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'user-list',
@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit {
   public pageSize = 15;
 
   constructor(private tokenService: Angular2TokenService,
-    private userService: UserService,
+    private dataService: DataService,
     private router: Router) {}
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class UserListComponent implements OnInit {
   }
 
   private getIndex() {
-    this.userService.index({per_page: this.pageSize, page: this.page, search: this.search})
+    this.dataService.index("user", {per_page: this.pageSize, page: this.page, search: this.search})
     .subscribe( data => {
       let json = data.json();
       this.data = json.users;

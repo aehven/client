@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 
 import { User } from '../user/user';
-import { UserService } from '../user/user.service';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent  {
 
   constructor(private tokenService: Angular2TokenService,
               fb: FormBuilder, private router: Router,
-              private userService: UserService) {
+              private dataService: DataService) {
     this.complexForm = fb.group({
       'email' : [environment.demoUser, Validators.required],
       'password': [environment.demoPassword, Validators.required]
@@ -33,7 +33,7 @@ export class LoginComponent  {
     }).subscribe(
       res =>      {
         let u = res.json().data as User;
-        this.userService.loggedInUser = u;
+        this.dataService.loggedInUser = u;
         if(u.role == "regular") {
           this.router.navigate(['/user', u.id]);
         }

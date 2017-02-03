@@ -6,7 +6,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { NotificationsService } from 'angular2-notifications';
 
 import { User } from './user';
-import { UserService } from './user.service';
+import { DataService } from '../data.service';
 
 import { MyValidators } from '../shared/my-validators';
 
@@ -27,7 +27,7 @@ export class UserDetailComponent implements OnInit {
   private cancelClicked: boolean = false;
 
   constructor(private tokenService: Angular2TokenService,
-              private userService: UserService,
+              private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
               private notificationsService: NotificationsService,
@@ -61,7 +61,7 @@ export class UserDetailComponent implements OnInit {
         this.isReadOnly = false;
       }
       else {
-        this.userService.show(+params['id'])
+        this.dataService.show("user", +params['id'])
         .subscribe( data => {
           this.user = data.json() as User;
           this.form.patchValue(this.user);
@@ -72,8 +72,8 @@ export class UserDetailComponent implements OnInit {
   }
 
   submitForm(values): void {
-    if(this.userService.shownUser == null) {
-      this.userService.create(values).subscribe(
+    if(this.dataService.current["user"] == null) {
+      this.dataService.create("user", values).subscribe(
         res =>      {
           this.notificationsService.success("Yay!", "User created successfully");
           this.isReadOnly = true;
@@ -85,7 +85,7 @@ export class UserDetailComponent implements OnInit {
       );
     }
     else {
-      this.userService.update(this.user.id, values).subscribe(
+      this.dataService.update("user", this.user.id, values).subscribe(
         res =>      {
           this.notificationsService.success("Yay!", "User updated successfully");
           this.isReadOnly = true;
@@ -99,7 +99,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   delete(): void {
-    this.userService.delete(this.user.id)
+    this.dataService.delete("user", this.user.id)
     .subscribe(
       res => {
         this.notificationsService.success("Yay!", "User deleted successfully");

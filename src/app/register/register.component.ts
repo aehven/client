@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 
 import { User } from '../user/user';
-import { UserService } from '../user/user.service';
+import { DataService } from '../data.service';
 
 import { MyValidators } from '../shared/my-validators';
 
@@ -20,7 +20,7 @@ export class RegisterComponent  {
 
   constructor(private tokenService: Angular2TokenService,
               fb: FormBuilder, private router: Router,
-              private userService: UserService) {
+              private dataService: DataService) {
     this.complexForm = fb.group({
       'email' : [null, Validators.required],
       'password': [null, Validators.required],

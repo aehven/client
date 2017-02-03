@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { Angular2TokenService } from 'angular2-token';
 import { SimpleNotificationsModule } from 'angular2-notifications';
@@ -44,7 +44,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule,
     RouterModule.forRoot(appRoutes),
-    NgbAlertModule.forRoot(),
+    NgbModule.forRoot(),
     NgbPaginationModule.forRoot(),
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger',

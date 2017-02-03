@@ -12,7 +12,7 @@ export class DataService {
   public current = {};
 
   baseUrl(resource: string) : string {
-    switch(resource) {
+    switch(resource.toLowerCase()) {
       case 'user':
         return 'users';
 

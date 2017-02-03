@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
   private logOut() {
     this.tokenService.signOut().subscribe(
       res => {
-        this.dataService.loggedInUser = null;
         this.router.navigate(['/login/']);
       },
       error =>    console.log(error)

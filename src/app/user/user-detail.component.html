@@ -71,7 +71,7 @@
 
             <a
               href=""
-              *ngIf="isReadOnly && dataService.current['user'] != null && dataService?.loggedInUser?.role=='admin'"
+              *ngIf="isReadOnly && dataService.current['user'] != null && tokenService?.currentUserData?.role=='admin'"
               class="btn btn-danger"
               mwlConfirmationPopover
               [title]="title"

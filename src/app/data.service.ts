@@ -8,7 +8,6 @@ import { Angular2TokenService } from 'angular2-token';
 export class DataService {
   constructor(private tokenService: Angular2TokenService, private http: Http) { }
 
-  public loggedInUser;
   public current = {};
 
   baseUrl(resource: string) : string {
@@ -72,6 +71,7 @@ export class DataService {
   }
 
   log_response(method, res): void {
+    console.log("currentUserData: " + JSON.stringify(this.tokenService.currentUserData));
     res.subscribe(
       res => {
         console.log("data service: " + method + ": " + res);

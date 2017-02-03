@@ -33,7 +33,6 @@ export class LoginComponent  {
     }).subscribe(
       res =>      {
         let u = res.json().data as User;
-        this.dataService.loggedInUser = u;
         if(u.role == "regular") {
           this.router.navigate(['/user', u.id]);
         }

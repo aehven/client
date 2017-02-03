@@ -1,11 +1,11 @@
 <ul class="nav nav-pills nav-fill" style="background-color:#eee">
-  <li *ngIf="dataService?.loggedInUser && dataService?.loggedInUser?.role != 'regular'"
+  <li *ngIf="tokenService?.currentUserData && tokenService?.currentUserData?.role != 'regular'"
    class="nav-item active">
     <a class="nav-link" href="" routerLink="/users" routerLinkActive="active">
      Users
     </a>
   </li>
-  <li *ngIf="dataService?.loggedInUser"
+  <li *ngIf="tokenService?.currentUserData"
    class="nav-item">
     <a class="nav-link" href="" (click)="logOut()">Log Out</a>
   </li>

@@ -27,7 +27,7 @@
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "linode": "environments/environment.linode.ts",
-        "demo": "environments/environment.demo.ts",
+        "test": "environments/environment.test.ts",
         "prod": "environments/environment.prod.ts"
       }
     }

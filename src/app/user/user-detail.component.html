@@ -27,10 +27,12 @@
             <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="error">Email is required.</div>
             <div *ngIf="form.controls['email'].hasError('mailFormat') && form.controls['email'].touched" class="error">Invalid email.</div>
           </div>
-          <div *ngIf="dataService.current['user'] == null" class="form-group" [ngClass]="{'has-error':!form.controls['role'].valid && form.controls['role'].touched}">
+          <div *ngIf="tokenService?.currentUserData && tokenService?.currentUserData?.role == 'admin'" class="form-group" [ngClass]="{'has-error':!form.controls['role'].valid && form.controls['role'].touched}">
             <label>Role:</label>
-            <input [readonly]="isReadOnly" class="form-control" type="text" [formControl]="form.controls['role']">
-            <div *ngIf="form.controls['role'].hasError('required') && form.controls['role'].touched" class="error">Role is required.</div>
+            <select id="roleSelect" formControlName="role" class="form-control input-lg">
+              <option value="regular">Regular</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
           <div *ngIf="!isReadOnly">
             <div class="form-group" [ngClass]="{'has-error':!form.controls['password'].valid && form.controls['password'].touched}">
@@ -56,7 +58,7 @@
             <button
               *ngIf="isReadOnly"
               class="btn btn-primary"
-              (click)="isReadOnly=false"
+              (click)="toggleReadOnly()"
             >
               Edit
             </button>
@@ -64,14 +66,14 @@
             <button
               *ngIf="!isReadOnly"
               class="btn btn-primary"
-              (click)="isReadOnly=true;getUser()"
+              (click)="toggleReadOnly()"
             >
               Cancel
             </button>
 
             <a
               href=""
-              *ngIf="isReadOnly && dataService.current['user'] != null && tokenService?.currentUserData?.role=='admin'"
+              *ngIf="isReadOnly && tokenService?.currentUserData && tokenService?.currentUserData?.role == 'admin'"
               class="btn btn-danger"
               mwlConfirmationPopover
               [title]="title"

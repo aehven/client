@@ -65,6 +65,8 @@ export class UserDetailComponent implements OnInit {
         .subscribe( data => {
           this.user = data.json() as User;
           this.form.patchValue(this.user);
+          var roleSelect = document.getElementById("roleSelect");
+          roleSelect.setAttribute("disabled", "disabled");
         },
         error => {console.error(error)});
       }
@@ -118,5 +120,17 @@ export class UserDetailComponent implements OnInit {
     // this isn't necessary if open maps in new tab with address query
     // window.open('http://maps.google.com/maps?z=10&t=m&q=loc:'+this.user.latitude+'+'+this.user.longitude);
     return false;
+  }
+
+  toggleReadOnly(): void {
+    this.isReadOnly = !this.isReadOnly;
+    var roleSelect = document.getElementById("roleSelect");
+    if(this.isReadOnly) {
+      roleSelect.setAttribute("disabled", "disabled");
+      this.getUser();
+    }
+    else {
+      roleSelect.removeAttribute("disabled");
+    }
   }
 }

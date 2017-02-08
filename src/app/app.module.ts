@@ -50,7 +50,7 @@ const appRoutes: Routes = [
       confirmButtonType: 'danger',
       placement: 'top'
     }),
-    SimpleNotificationsModule
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [
       Angular2TokenService,
